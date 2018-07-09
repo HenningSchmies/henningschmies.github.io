@@ -66,7 +66,12 @@ tag_cloud &lt;a class="reference external" href="https://github.com/getpelican/p
 &lt;li&gt;Integrate a gallery, if possible the &lt;a class="reference external" href="https://github.com/nanogallery2"&gt;nanogallery2&lt;/a&gt;  and try to make it possible to have to gallaries in one single article.&lt;/li&gt;
 &lt;li&gt;Enable disqus (Don't really know why its not working)&lt;/li&gt;
 &lt;li&gt;Install plugin assets, neighbors&lt;/li&gt;
+&lt;li&gt;Find efficient ways to get the pictures with the right solution into the right places.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://www.jacklmoore.com/colorbox"&gt;http://www.jacklmoore.com/colorbox&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Ok, what I'm trying to do now, is include multiple libraries via a neat trick unsing something like:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;
+{% if field.name.startswith('i-') %}
+&lt;/pre&gt;
 &lt;/div&gt;
 </content><category term="python pelican set-up github-hosting"></category></entry></feed>

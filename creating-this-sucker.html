@@ -138,8 +138,13 @@ tag_cloud <a class="reference external" href="https://github.com/getpelican/peli
 <li>Integrate a gallery, if possible the <a class="reference external" href="https://github.com/nanogallery2">nanogallery2</a>  and try to make it possible to have to gallaries in one single article.</li>
 <li>Enable disqus (Don't really know why its not working)</li>
 <li>Install plugin assets, neighbors</li>
+<li>Find efficient ways to get the pictures with the right solution into the right places.</li>
 </ul>
 <p><a class="reference external" href="http://www.jacklmoore.com/colorbox">http://www.jacklmoore.com/colorbox</a></p>
+<p>Ok, what I'm trying to do now, is include multiple libraries via a neat trick unsing something like:</p>
+<pre class="code literal-block">
+{% if field.name.startswith('i-') %}
+</pre>
 </div>
 
   </div>
