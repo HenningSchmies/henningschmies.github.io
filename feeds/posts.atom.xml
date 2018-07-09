@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Worldbeater dispatch - posts</title><link href="https://henningschmies.github.io/" rel="alternate"></link><link href="https://henningschmies.github.io/feeds/posts.atom.xml" rel="self"></link><id>https://henningschmies.github.io/</id><updated>2016-06-08T20:00:00+02:00</updated><entry><title>Gitignore Exmaples</title><link href="https://henningschmies.github.io/first-post.html" rel="alternate"></link><published>2016-06-08T20:00:00+02:00</published><updated>2016-06-08T20:00:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2016-06-08:/first-post.html</id><summary type="html">&lt;p class="first last"&gt;My first post, read it to find out.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;# Ignore everything
+*&lt;/p&gt;
+&lt;p&gt;#But not these files...
+!.enc&lt;/p&gt;
+&lt;p&gt;use it/try it in &amp;quot;C:UsersH.SchmiesDocumentsGitHubListsDatabases.gitignore&amp;quot;&lt;/p&gt;
+</content><category term="python firsts"></category></entry></feed>
