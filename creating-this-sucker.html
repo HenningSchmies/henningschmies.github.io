@@ -143,8 +143,13 @@ tag_cloud <a class="reference external" href="https://github.com/getpelican/peli
 <p><a class="reference external" href="http://www.jacklmoore.com/colorbox">http://www.jacklmoore.com/colorbox</a></p>
 <p>Ok, what I'm trying to do now, is include multiple libraries via a neat trick unsing something like:</p>
 <pre class="code literal-block">
-{% if field.name.startswith('i-') %}
+% if field.name.startswith('i-') %
 </pre>
+<p>Ok, since the templating does not work as I wanted it to, we have to thing of something else.</p>
+<p>It appear I have to write a real nanogallery2 template to get this done.</p>
+</div>
+<div class="section" id="using-flickr-with-nanogallery2">
+<h2>Using Flickr with Nanogallery2</h2>
 </div>
 
   </div>

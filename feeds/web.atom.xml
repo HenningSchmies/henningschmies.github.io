@@ -71,7 +71,12 @@ tag_cloud &lt;a class="reference external" href="https://github.com/getpelican/p
 &lt;p&gt;&lt;a class="reference external" href="http://www.jacklmoore.com/colorbox"&gt;http://www.jacklmoore.com/colorbox&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ok, what I'm trying to do now, is include multiple libraries via a neat trick unsing something like:&lt;/p&gt;
 &lt;pre class="code literal-block"&gt;
-{% if field.name.startswith('i-') %}
+% if field.name.startswith('i-') %
 &lt;/pre&gt;
+&lt;p&gt;Ok, since the templating does not work as I wanted it to, we have to thing of something else.&lt;/p&gt;
+&lt;p&gt;It appear I have to write a real nanogallery2 template to get this done.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="using-flickr-with-nanogallery2"&gt;
+&lt;h2&gt;Using Flickr with Nanogallery2&lt;/h2&gt;
 &lt;/div&gt;
 </content><category term="python pelican set-up github-hosting"></category></entry></feed>
