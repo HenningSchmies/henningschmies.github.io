@@ -116,13 +116,13 @@ span rows.&lt;/td&gt;
       "thumbnailLabel":            { "display" : false }
     }'&gt;
   &lt;/div&gt;</content><category term="Spanien"></category><category term="Katalonien"></category><category term="Städtetrip"></category></entry><entry><title>Madrid</title><link href="https://henningschmies.github.io/Madrid.html" rel="alternate"></link><published>2018-07-06T01:23:00+02:00</published><updated>2018-07-06T01:23:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2018-07-06:/Madrid.html</id><summary type="html">&lt;p class="first last"&gt;How I spent 3 wonderful days in Barcelona.&lt;/p&gt;
-</summary><content type="html">&lt;p&gt;This article is just a stub&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;This article is just a &lt;a class="reference external" href="mailto:stub149035168&amp;#64;N08"&gt;stub149035168&amp;#64;N08&lt;/a&gt;     72157693115455660&lt;/p&gt;
 &lt;iframe src="https://www.google.com/maps/d/u/1/embed?mid=1iysiiERTnoJu-D8tEVplzZYp0vgkd5pV" width="100%" height="480"&gt;&lt;/iframe&gt;&lt;h1&gt;gallery made with nanogallery2&lt;/h1&gt;
 
   &lt;div id="nanogallery3" data-nanogallery2='{
       "kind":                      "flickr",
-      "userID":                    "149035168@N08",
-      "photoset":                  "72157693115455660",
+      "userID":                    "rebeccadaleadler",
+      "photoset":                  "72157657586178051",
       "thumbnailHeight":           200,
       "thumbnailWidth":            200,
       "galleryMosaic":             [
