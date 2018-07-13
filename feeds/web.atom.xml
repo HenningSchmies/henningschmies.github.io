@@ -25,7 +25,8 @@ git push -u origin master&lt;/p&gt;
 &lt;a class="reference external" href="https://themes.gohugo.io/tags/blog/"&gt;https://themes.gohugo.io/tags/blog/&lt;/a&gt;
 &lt;a class="reference external" href="https://themes.gohugo.io/future-imperfect/"&gt;https://themes.gohugo.io/future-imperfect/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;but Hugo requires an installation of Go, so this was discarded for right now.&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://fancyapps.com/fancybox/3/"&gt;http://fancyapps.com/fancybox/3/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://fancyapps.com/fancybox/3/"&gt;http://fancyapps.com/fancybox/3/&lt;/a&gt;
+&lt;a class="reference external" href="https://pypi.org/project/typogrify/"&gt;https://pypi.org/project/typogrify/&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="functionality"&gt;
 &lt;h2&gt;Functionality&lt;/h2&gt;
@@ -51,10 +52,16 @@ Jinja2Content &lt;a class="reference external" href="https://github.com/getpelic
 &lt;p&gt;ical &lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/ical"&gt;https://github.com/getpelican/pelican-plugins/tree/master/ical&lt;/a&gt;
 series &lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/series"&gt;https://github.com/getpelican/pelican-plugins/tree/master/series&lt;/a&gt;
 tag_cloud &lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/tag_cloud"&gt;https://github.com/getpelican/pelican-plugins/tree/master/tag_cloud&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;sitemap
+simple footnotes
+share post
+pelican_javascript?&lt;/p&gt;
+&lt;p&gt;pelican-entities by AlexJF&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="themes"&gt;
 &lt;h2&gt;Themes&lt;/h2&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://www.pelicanthemes.com/"&gt;http://www.pelicanthemes.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://jasonstitt.com/tech-blog-pelican-git"&gt;https://jasonstitt.com/tech-blog-pelican-git&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="assets"&gt;
 &lt;h2&gt;Assets&lt;/h2&gt;
@@ -69,6 +76,7 @@ tag_cloud &lt;a class="reference external" href="https://github.com/getpelican/p
 &lt;li&gt;Find efficient ways to get the pictures with the right solution into the right places.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://www.jacklmoore.com/colorbox"&gt;http://www.jacklmoore.com/colorbox&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://pypi.python.org/pypi/typogrify"&gt;http://pypi.python.org/pypi/typogrify&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Ok, what I'm trying to do now, is include multiple libraries via a neat trick unsing something like:&lt;/p&gt;
 &lt;pre class="code literal-block"&gt;
 % if field.name.startswith('i-') %
@@ -78,5 +86,33 @@ tag_cloud &lt;a class="reference external" href="https://github.com/getpelican/p
 &lt;/div&gt;
 &lt;div class="section" id="using-flickr-with-nanogallery2"&gt;
 &lt;h2&gt;Using Flickr with Nanogallery2&lt;/h2&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html"&gt;http://docutils.sourceforge.net/docs/user/rst/quickref.html&lt;/a&gt;
+&lt;a class="reference external" href="http://docutils.sourceforge.net/docs/howto/rst-roles.html"&gt;http://docutils.sourceforge.net/docs/howto/rst-roles.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://stackoverflow.com/questions/7250659/how-to-use-python-to-programmatically-generate-part-of-sphinx-documentation"&gt;https://stackoverflow.com/questions/7250659/how-to-use-python-to-programmatically-generate-part-of-sphinx-documentation&lt;/a&gt;    see how to create a rst directive?&lt;/p&gt;
+&lt;p&gt;The alternative would be to use something like masonry &lt;a class="reference external" href="https://github.com/desandro/masonry"&gt;https://github.com/desandro/masonry&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="error-messages-and-remedies"&gt;
+&lt;h2&gt;Error Messages and remedies&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;dl class="first docutils"&gt;
+&lt;dt&gt;could not find information about title&lt;/dt&gt;
+&lt;dd&gt;either add title meta data when regular article or you need to avoid the file's compilation&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="abbreviations"&gt;
+&lt;h2&gt;Abbreviations&lt;/h2&gt;
+&lt;p&gt;This will be turned into &lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;.&lt;/p&gt;
+&lt;p&gt;Examples
+- &lt;a class="reference external" href="https://jasonstitt.com/"&gt;https://jasonstitt.com/&lt;/a&gt;
+- &lt;a class="reference external" href="http://www.erikjohanssonphoto.com/"&gt;http://www.erikjohanssonphoto.com/&lt;/a&gt;
+- &lt;a class="reference external" href="https://standage.github.io/pages/notebook-setup.html"&gt;https://standage.github.io/pages/notebook-setup.html&lt;/a&gt;
+- &lt;a class="reference external" href="https://www.robertputt.co.uk/goodbye-wordpress-hello-static-blog.html"&gt;https://www.robertputt.co.uk/goodbye-wordpress-hello-static-blog.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/hunt3r/pelican-gallery"&gt;https://github.com/hunt3r/pelican-gallery&lt;/a&gt;    second type of gallery&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/micahjsmith/cambridge-half-analysis"&gt;https://github.com/micahjsmith/cambridge-half-analysis&lt;/a&gt;
+&lt;a class="reference external" href="https://github.com/micahjsmith/paper-template"&gt;https://github.com/micahjsmith/paper-template&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/micahjsmith/micahjsmith.github.io"&gt;https://github.com/micahjsmith/micahjsmith.github.io&lt;/a&gt;
+&lt;a class="reference external" href="https://www.micahsmith.com/"&gt;https://www.micahsmith.com/&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </content><category term="python pelican set-up github-hosting"></category></entry></feed>

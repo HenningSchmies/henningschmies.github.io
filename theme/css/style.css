@@ -1,3 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic|Source+Sans+Pro:600|Inconsolata);
+
+code, pre { font-family: "Inconsolata"; }
+h1, h2, h3, h4, h5, h6 { font-family: "Source Sans Pro", "KaiTi", "楷体", "STKaiti", "华文楷体", sans-serif;}
+/*margin: 1.5em 0 0.3em 0; */
 ::selection {
   background: #0085a1;
   color: #fff;
@@ -26,10 +31,17 @@ hr {
   margin: 1.5rem 0;
 }
 
+/*
+body.p {
+  margin-left: 85px;
+  margin-right: 85px;
+  font-size: 1.1rem;
+}
+me-vs-me change*/
 /* ------------------------------------------------------------------------- */
 
 .container {
-  max-width: 960px;
+  max-width: 960px;  /*960px;*/
 }
 
 .header,
@@ -62,8 +74,28 @@ hr {
 }
 
 .main {
-  background-color: #fff;
+  background: #F7F7F8; color: #222;
+  /*background-color: #fff; */
   padding: 1.5rem 0;
+  font-family: "Merriweather", "georgia", "Microsoft Yahei", "微软雅黑", "STXihei", "华文细黑", serif;
+}
+
+div.content h1, h2, h3, h4, h5, div.content h6 {
+  margin-left: 85px;
+  margin-right: 85px;
+  color: rgba(70,130,180,1)
+}
+
+.content table {
+  margin-left: 85px;
+  margin-right: 85px;
+  font-size: 0.85rem;
+}
+
+div.content p {
+  margin-left: 85px;
+  margin-right: 85px;
+  font-size: 1.1rem;
 }
 
 .footer {
@@ -124,4 +156,35 @@ hr {
   .teaser header li:not(:last-child) {
     margin-right: 10px;
   }
+}
+
+/*
+html {
+  background: rgb(236, 236, 236) url(https://kevin.deldycke.com/theme/img/fabric_plaid.png);
+  box-shadow: inset 0 10px 100px -30px rgba(0, 0, 0, 0.5);
+} */
+
+.footer {
+  border-top: 1px solid #fff;
+/*  margin-top: 50px; */
+  background: url(https://kevin.deldycke.com/theme/img/creampaper.png);
+  padding: 20px;
+  text-shadow: 0px 1px 1px white;
+  box-shadow: inset 0 30px 30px -30px rgba(0, 0, 0, 0.5);
+}
+
+.main {
+  border-top: 1px solid #000;
+  box-shadow: inset 0 30px 100px -30px rgba(0, 0, 0, 0.6);
+}
+/*.footer,*/
+.header {
+  box-shadow: inset 0 10px 55px -30px rgba (248, 236, 180, 0.6); /*(242, 238, 203, 0.6);*/
+/* from http://lea.verou.me/css3patterns */
+  background-color: #fff; 
+  background-image: 
+  linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+  linear-gradient(#eee .1em, transparent .1em);
+  background-size: 100% 1.2em;
+  border-bottom: 1px solid #fff;
 }
