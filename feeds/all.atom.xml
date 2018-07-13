@@ -82,7 +82,10 @@ span rows.&lt;/td&gt;
 &lt;h2&gt;The Highlight&lt;/h2&gt;
 &lt;p&gt;The best moment of out journey in Barcelona, for me, was out visit to &lt;strong&gt;Parque Güell&lt;/strong&gt;. To make this visit one has to order tickets online in advance for a certain entry hour, and they are relatively strict about that. I guess the unlying logic is to avoid Parque Güell being to crowded. Apparently, they are also rather strict about eating in the parque.&lt;/p&gt;
 &lt;p&gt;First of all, to get an impression of what's there to see in Barcelona take a look at this quite boring yet nice to look at video of &lt;strong&gt;Parque Güell&lt;/strong&gt;.&lt;/p&gt;
-&lt;iframe width="800" height="450" src="https://www.youtube.com/embed/3gy8gAVywfs?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;And year, then one of the most important things for you to follow is to see a map of what we have seen there. Luckily, Google's myMaps is easiliest implementable. Ups... now, that's Madrid&lt;/p&gt;
+&lt;iframe width="480" height="270" src="https://www.youtube.com/embed/3gy8gAVywfs?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;&lt;!-- comment
+:max_width: 800
+:max_height: 480 --&gt;
+&lt;p&gt;And year, then one of the most important things for you to follow is to see a map of what we have seen there. Luckily, Google's myMaps is easiliest implementable. Ups... now, that's Madrid&lt;/p&gt;
 &lt;h2&gt;Now the photoset&lt;/h2&gt;
 
   &lt;div data-nanogallery2='{
@@ -104,7 +107,7 @@ span rows.&lt;/td&gt;
   &lt;/div&gt;&lt;p&gt;I need more text to make this look really great and as cool as it deserves to loook. I hope I can achieve that somehow. Ironically, writing is not my strong side...  but I needed to have a blog anyways.&lt;/p&gt;
 &lt;h2&gt;Barcelona architecture&lt;/h2&gt;
 
-  &lt;div id=12 data-nanogallery5='{
+  &lt;div id="b_a" data-nanogallery2='{
       "userID": "141333517@N07",
       "kind": "flickr",
       "photoset": "none",

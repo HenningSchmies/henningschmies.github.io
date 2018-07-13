@@ -92,6 +92,12 @@ div.content h1, h2, h3, h4, h5, div.content h6 {
   font-size: 0.85rem;
 }
 
+div.content iframe {
+  width: 100%;
+  padding-top: 75%;
+}
+
+/* Trying to get Youtube Videos in Content to adhere to better fitting */
 div.content p {
   margin-left: 85px;
   margin-right: 85px;
