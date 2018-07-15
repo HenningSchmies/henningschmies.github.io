@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Worldbeater dispatch - misc</title><link href="https://henningschmies.github.io/" rel="alternate"></link><link href="https://henningschmies.github.io/feeds/misc.atom.xml" rel="self"></link><id>https://henningschmies.github.io/</id><updated>2018-07-07T00:46:00+02:00</updated><entry><title>Combining the power of jinja with the python pandas</title><link href="https://henningschmies.github.io/feed-jinja-some-pandas.html" rel="alternate"></link><published>2018-07-07T00:46:00+02:00</published><updated>2018-07-07T00:46:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2018-07-07:/feed-jinja-some-pandas.html</id><summary type="html">&lt;p&gt;In my strive to find new ways to implement jinja with force I wanted to use my goto BDE.&lt;/p&gt;
-&lt;p&gt;Um yeah.&lt;/p&gt;
-&lt;p&gt;Oh wait what....
-What this actually was supposed to be is a post that is password protected and shows the development of my fatness. Jup. Or more hopefully, the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In my strive to find new ways to implement jinja with force I wanted to use my goto BDE.&lt;/p&gt;
-&lt;p&gt;Um yeah.&lt;/p&gt;
-&lt;p&gt;Oh wait what....
-What this actually was supposed to be is a post that is password protected and shows the development of my fatness. Jup. Or more hopefully, the reduction thereof. The clue in all of this is that I want to use google charts and maybe even highcharts or something else, really cool.&lt;/p&gt;
-</content></entry></feed>

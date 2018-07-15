@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Worldbeater dispatch</title><link href="https://henningschmies.github.io/" rel="alternate"></link><link href="https://henningschmies.github.io/feeds/all.atom.xml" rel="self"></link><id>https://henningschmies.github.io/</id><updated>2018-07-07T00:46:00+02:00</updated><entry><title>Combining the power of jinja with the python pandas</title><link href="https://henningschmies.github.io/feed-jinja-some-pandas.html" rel="alternate"></link><published>2018-07-07T00:46:00+02:00</published><updated>2018-07-07T00:46:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2018-07-07:/feed-jinja-some-pandas.html</id><summary type="html">&lt;p&gt;In my strive to find new ways to implement jinja with force I wanted to use my goto BDE.&lt;/p&gt;
-&lt;p&gt;Um yeah.&lt;/p&gt;
-&lt;p&gt;Oh wait what....
-What this actually was supposed to be is a post that is password protected and shows the development of my fatness. Jup. Or more hopefully, the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In my strive to find new ways to implement jinja with force I wanted to use my goto BDE.&lt;/p&gt;
-&lt;p&gt;Um yeah.&lt;/p&gt;
-&lt;p&gt;Oh wait what....
-What this actually was supposed to be is a post that is password protected and shows the development of my fatness. Jup. Or more hopefully, the reduction thereof. The clue in all of this is that I want to use google charts and maybe even highcharts or something else, really cool.&lt;/p&gt;
-</content></entry><entry><title>Porto</title><link href="https://henningschmies.github.io/Porto.html" rel="alternate"></link><published>2018-07-06T14:23:00+02:00</published><updated>2018-07-06T14:23:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2018-07-06:/Porto.html</id><summary type="html">&lt;p class="first last"&gt;Vinho e versimilhas verdades&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Worldbeater dispatch</title><link href="https://henningschmies.github.io/" rel="alternate"></link><link href="https://henningschmies.github.io/feeds/all.atom.xml" rel="self"></link><id>https://henningschmies.github.io/</id><updated>2018-07-06T14:23:00+02:00</updated><entry><title>Porto</title><link href="https://henningschmies.github.io/Porto.html" rel="alternate"></link><published>2018-07-06T14:23:00+02:00</published><updated>2018-07-06T14:23:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2018-07-06:/Porto.html</id><summary type="html">&lt;p class="first last"&gt;Vinho e versimilhas verdades&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;This article is just a stumb&lt;/p&gt;
 &lt;div class="airbnb-embed-frame" data-id="20542606" data-view="home" style="width:450px;height:300px;margin:auto"&gt;&lt;a href="https://www.airbnb.de/rooms/20542606?s=51"&gt;&lt;span&gt;Auf Airbnb ansehen&lt;/span&gt;&lt;/a&gt;&lt;a href="https://www.airbnb.de/rooms/20542606?s=51" rel="nofollow"&gt;TPC - Indoor Secrets - 1st Front&lt;/a&gt;&lt;script async="" src="https://www.airbnb.de/embeddable/airbnb_jssdk"&gt;&lt;/script&gt;&lt;/div&gt;&lt;p&gt;Grid table:&lt;/p&gt;
 &lt;table border="1" class="docutils"&gt;
@@ -45,7 +38,7 @@ span rows.&lt;/td&gt;
 &lt;/table&gt;
 </content><category term="Portugal"></category><category term="Porto"></category><category term="Städtetrip"></category><category term="Francesinha"></category></entry><entry><title>Lissabon</title><link href="https://henningschmies.github.io/Lissabon.html" rel="alternate"></link><published>2018-07-06T13:23:00+02:00</published><updated>2018-07-06T13:23:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2018-07-06:/Lissabon.html</id><summary type="html">&lt;p class="first last"&gt;How I spent 3 wonderful days in Barcelona.&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;This article is just a stub&lt;/p&gt;
-&lt;div class="airbnb-embed-frame" data-id="3846633" data-view="home" style="width:450px;height:300px;margin:auto"&gt;&lt;a href="https://www.airbnb.de/rooms/3846633?s=51"&gt;&lt;span&gt;Auf Airbnb ansehen&lt;/span&gt;&lt;/a&gt;&lt;a href="https://www.airbnb.de/rooms/3846633?s=51" rel="nofollow"&gt;Rare spot&lt;/a&gt;&lt;script async="" src="https://www.airbnb.de/embeddable/airbnb_jssdk"&gt;&lt;/script&gt;&lt;/div&gt;</content><category term="Spanien"></category><category term="Katalonien"></category><category term="Städtetrip"></category></entry><entry><title>Barcelona: Ein wahnsinnig schöner Geburtstag</title><link href="https://henningschmies.github.io/Barcelona.html" rel="alternate"></link><published>2018-07-06T01:23:00+02:00</published><updated>2018-07-06T01:23:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2018-07-06:/Barcelona.html</id><summary type="html">&lt;p class="first last"&gt;How I spent 3 wonderful days in Barcelona.&lt;/p&gt;
+&lt;div class="airbnb-embed-frame" data-id="3846633" data-view="home" style="width:450px;height:300px;margin:auto"&gt;&lt;a href="https://www.airbnb.de/rooms/3846633?s=51"&gt;&lt;span&gt;Auf Airbnb ansehen&lt;/span&gt;&lt;/a&gt;&lt;a href="https://www.airbnb.de/rooms/3846633?s=51" rel="nofollow"&gt;Rare spot&lt;/a&gt;&lt;script async="" src="https://www.airbnb.de/embeddable/airbnb_jssdk"&gt;&lt;/script&gt;&lt;/div&gt;</content><category term="Spanien"></category><category term="Katalonien"></category><category term="Städtetrip"></category></entry><entry><title>Barcelona: Katalonien</title><link href="https://henningschmies.github.io/Barcelona.html" rel="alternate"></link><published>2018-07-06T01:23:00+02:00</published><updated>2018-07-06T01:23:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2018-07-06:/Barcelona.html</id><summary type="html">&lt;p class="first last"&gt;How I spent 3 wonderful days in Barcelona.&lt;/p&gt;
 </summary><content type="html">&lt;div id="nanogallery3" data-nanogallery2='{
       "kind":                      "flickr",
       "userID":                    "149035168@N08",
@@ -77,12 +70,18 @@ span rows.&lt;/td&gt;
       "galleryDisplayMode":        "pagination",
       "thumbnailLabel":            { "display" : false }
     }'&gt;
-&lt;/div&gt;&lt;p&gt;As our last station, we wanted to pass some days in Barcelona, so we booked a nice looking AirBnb and organised everything else. We flew in from Porto, and originally, the plan was that Isabel would return to Madrid and I would be flying out from Girona back to Germany.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;As our last station, we wanted to pass some days in Barcelona, so we booked a nice looking AirBnb and organised everything else. We flew in from Porto, and originally, the plan was that ... would return to Madrid and I would be flying out from Girona back to Germany.&lt;/p&gt;
 &lt;div class="section" id="the-highlight"&gt;
 &lt;h2&gt;The Highlight&lt;/h2&gt;
 &lt;p&gt;The best moment of out journey in Barcelona, for me, was out visit to &lt;strong&gt;Parque Güell&lt;/strong&gt;. To make this visit one has to order tickets online in advance for a certain entry hour, and they are relatively strict about that. I guess the unlying logic is to avoid Parque Güell being to crowded. Apparently, they are also rather strict about eating in the parque.&lt;/p&gt;
 &lt;p&gt;First of all, to get an impression of what's there to see in Barcelona take a look at this quite boring yet nice to look at video of &lt;strong&gt;Parque Güell&lt;/strong&gt;.&lt;/p&gt;
-&lt;iframe width="960" height="540" src="https://www.youtube.com/embed/3gy8gAVywfs?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;And year, then one of the most important things for you to follow is to see a map of what we have seen there. Luckily, Google's myMaps is easiliest implementable. Ups... now, that's Madrid&lt;/p&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;iframe width="800" height="450" src="https://www.youtube.com/embed/3gy8gAVywfs?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;And year, then one of the most important things for you to follow is to see a map of what we have seen there. Luckily, Google's myMaps is easiliest implementable. Ups... now, that's Madrid&lt;/p&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;h2&gt;Now the photoset&lt;/h2&gt;
 
   &lt;div data-nanogallery2='{
@@ -101,17 +100,23 @@ span rows.&lt;/td&gt;
       "thumbnailAlignment": "center"
     }'&gt;
 
-  &lt;/div&gt;&lt;p&gt;I need more text to make this look really great and as cool as it deserves to loook. I hope I can achieve that somehow. Ironically, writing is not my strong side...  but I needed to have a blog anyways.
+  &lt;/div&gt;&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;I need more text to make this look really great and as cool as it deserves to loook. I hope I can achieve that somehow. Ironically, writing is not my strong side...  but I needed to have a blog anyways.
 It’s not just would-be voters in the Catalan independence referendum who have taken a knock-back in Barcelona this year. The city’s image has also suffered from anti-tourism demonstrations and terrorist attacks, and the tourist industry is down some 15% since police violence and mass rallies grabbed international headlines in October. It’s down, but resolutely not out, however.&lt;/p&gt;
 &lt;p&gt;Brand Barcelona’s comeback begins with a contribution from its heaviest hitter: Antoni Gaudí. Almost a century after his death, the architect of La Sagrada Familia is still synonymous with the city. On 16 November, Gaudí’s first house, Casa Vicens, begun in 1883, will open permanently to the public for the first time.&lt;/p&gt;
 &lt;p&gt;The house in Barcelona’s Gràcia district was commissioned by and named after Manuel Vicens i Montaner, owner of a brick factory. Vicens was perhaps persuaded to gamble on the then-unknown 31-year-old architect by the head of Barcelona’s Architecture School, who famously said upon Gaudí’s graduation: “We have given this degree to either a fool or a genius. Time will tell.”&lt;/p&gt;
-&lt;iframe src="https://www.google.com/maps/d/u/1/embed?mid=1iysiiERTnoJu-D8tEVplzZYp0vgkd5pV" width="100%" height="480"&gt;&lt;/iframe&gt;&lt;p&gt;Vicens’s audacity resulted in what many consider to be the first major work of the Catalan modernisme movement, awarded Unesco status in 2005. Once surrounded by fields and smallholdings, the house now looks even more striking hemmed in by blocks of prosaic flats. Like much of the architect’s work, it is a glorious gallimaufry of styles, combining Japanese, Moorish-revival and original elements into an improbable success. Gullies of colourful bricks dribble from the eaves like a Lego model of a half-iced cake; viciously spiked wrought-iron gates are framed by green tiles in a marigolds design; leaf patterns on interior walls could be reflections of the garden or an allegory of the journey of Christ. Nothing is as it seems.&lt;/p&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;iframe src="https://www.google.com/maps/d/u/1/embed?mid=1iysiiERTnoJu-D8tEVplzZYp0vgkd5pV" width="100%" height="460"&gt;&lt;/iframe&gt;&lt;p&gt;Vicens’s audacity resulted in what many consider to be the first major work of the Catalan modernisme movement, awarded Unesco status in 2005. Once surrounded by fields and smallholdings, the house now looks even more striking hemmed in by blocks of prosaic flats. Like much of the architect’s work, it is a glorious gallimaufry of styles, combining Japanese, Moorish-revival and original elements into an improbable success. Gullies of colourful bricks dribble from the eaves like a Lego model of a half-iced cake; viciously spiked wrought-iron gates are framed by green tiles in a marigolds design; leaf patterns on interior walls could be reflections of the garden or an allegory of the journey of Christ. Nothing is as it seems.&lt;/p&gt;
 &lt;h2&gt;Barcelona architecture&lt;/h2&gt;
 
   &lt;div id="b_a" data-nanogallery2='{
       "userID": "141333517@N07",
       "kind": "flickr",
-      "photoset": "none",
+      "photoset": "72157693104260700",
       "thumbnailOpenOriginal": false,
       "thumbnailWidth": "200",
       "thumbnailLabel": {
@@ -147,22 +152,36 @@ It’s not just would-be voters in the Catalan independence referendum who have 
 
   &lt;/div&gt;&lt;p&gt;A local family bought Casa Vicens from Manuel’s widow in 1899 and lived there for three generations before putting it up for sale in 2007. In 2014, Andorran financial institution MoraBanc bought it, and its meticulous three-year restoration has separated the exuberant original interiors from those of a 1924 extension, which is now all in plain white for maximum contrast. The basement will house a gift shop, while on the top floor, where little of architectural value was left, there’s an exhibition of the house’s history and influences, complete with Gaudí’s original plans.&lt;/p&gt;
 &lt;p&gt;Manager Mercedes Mora says the time is right for Casa Vicens to open to the public. “Culture moves emotions,” she says. “This could be a moment of peace.” The building is, she notes, a dialogue between contrasting elements, and even between nature and architecture. “This is the essence of Gaudí’s universe – the garden of Catalan modernisme. We can see the seeds of styles and techniques that he nurtured throughout his career, and of others he used only here,” she says. “It represents a new way of thinking.”&lt;/p&gt;
-&lt;h1&gt;And one more try to include one opening here&lt;/h1&gt;
-  &lt;div id="nanogallery4" data-nanogallery2='{
-      "kind":            "flickr",
-      "userID":          "rebeccadaleadler",
-      "photoset":        "none",
-      "thumbnailLabel":  { "position" : "onBottom" },
-      "thumbnailHeight": "auto",
-      "thumbnailWidth":  200
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="b_a" data-nanogallery2='{
+      "userID": "141333517@N07",
+      "kind": "flickr",
+      "photoset": "72157699088404805",
+      "thumbnailOpenOriginal": false,
+      "thumbnailWidth": "200",
+      "thumbnailLabel": {
+        "displayDescription": true
+      },
+      "allowHTMLinData": true,
+      "thumbnailHoverEffect2": "image_rotateZ_0deg_10deg_1000|image_scale_1_1.3_1000",
+      "galleryDisplayMode": "moreButton",
+      "thumbnailAlignment": "center",
+      "galleryFilterTags": true,
+      "thumbnailLevelUp": true
     }'&gt;
-  &lt;/div&gt;&lt;/div&gt;
+
+&lt;/div&gt;&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;div class="section" id="accommodation"&gt;
 &lt;h2&gt;Accommodation&lt;/h2&gt;
-&lt;div class="airbnb-embed-frame" data-id="23074372" data-view="home" style="float: left;width:446.65px;height:453.65px;margin: -10px 10px 10px -100px"&gt;&lt;a href="https://www.airbnb.de/rooms/23074372?s=51"&gt;&lt;span&gt;Auf Airbnb ansehen&lt;/span&gt;&lt;/a&gt;&lt;a href="https://www.airbnb.de/rooms/23074372?s=51" rel="nofollow"&gt;Double room in 90m2 flat&lt;/a&gt;&lt;script async="" src="https://www.airbnb.de/embeddable/airbnb_jssdk"&gt;&lt;/script&gt;&lt;/div&gt;&lt;p&gt;So, not let's take a look at our AirBnb: The AirBnb was essentially the first one we booked without any real previous experience. In hindsight the choice could be considered a mistake, but it wasn't so horrible after all (if you asked me, at least :) ) The one difference was that we chose to book a shared apartment, so in essence we only had one room to ourselves, where during the previous stays we always had an entire, seperated apartment to us. The point really was that the circumstances weren't appeasing due to a lack of ...&lt;/p&gt;
+&lt;div class="airbnb-embed-frame" data-id="23074372" data-view="home" style="float: left;width:456.65px;height:463.65px;margin: -10px 10px 10px -100px"&gt;&lt;a href="https://www.airbnb.de/rooms/23074372?s=51"&gt;&lt;span&gt;Auf Airbnb ansehen&lt;/span&gt;&lt;/a&gt;&lt;a href="https://www.airbnb.de/rooms/23074372?s=51" rel="nofollow"&gt;Double room in 90m2 flat&lt;/a&gt;&lt;script async="" src="https://www.airbnb.de/embeddable/airbnb_jssdk"&gt;&lt;/script&gt;&lt;/div&gt;&lt;p&gt;So, not let's take a look at our AirBnb: The AirBnb was essentially the first one we booked without any real previous experience. In hindsight the choice could be considered a mistake, but it wasn't so horrible after all (if you asked me, at least :) ) The one difference was that we chose to book a shared apartment, so in essence we only had one room to ourselves, where during the previous stays we always had an entire, seperated apartment to us. The point really was that the circumstances weren't appeasing due to a lack of ...&lt;/p&gt;
 &lt;p&gt;We managed to stay there and weren't that much at home anyways so in the end it did not affect us that much. It has to been said though that the place was really nicely integrated into the metro system and in walking distance to La Sagrada Familia, at least if you like walking.&lt;/p&gt;
 &lt;p&gt;Ok, probably we should insert a little bit of text here. So that it looks more apt and fresh.&lt;/p&gt;
-&lt;div class="airbnb-embed-frame" data-id="192793" data-view="experience" data-hide-price="true" style="float:right;width:414px;height:561.65px;margin: 0 10px 10px 10px;scrolling:no;&gt;&lt;a href="https://www.airbnb.com/experiences/192793"&gt;&lt;span&gt;Auf Airbnb ansehen&lt;/span&gt;&lt;/a&gt;&lt;a href="https://www.airbnb.com/experiences/192793" rel="nofollow"&gt;Portuguese wine tasting:North to South&lt;/a&gt;&lt;script async="" src="https://www.airbnb.de/embeddable/airbnb_jssdk"&gt;&lt;/script&gt;&lt;/div&gt;&lt;p&gt;High above Barcelona, you enter this spacious paradise through heavy gates. It looks as if nothing could survive on the inhospitable slopes of Montjuïc but a path leads past a pond surrounded by trees. It was peaceful, and the layout – created in 1999 by architect Carlos Ferrater – encourages a slower appreciation of life. I began walking along what looked like a tempting yellow brick road, but was, in fact, a sandy route through what is an expansive nature reserve.&lt;/p&gt;
+&lt;div class="airbnb-embed-frame" data-id="192793" data-view="experience" data-hide-price="true" style="float:right;width:424px;height:571.65px;margin: 0 10px 10px 10px;scrolling:no;&gt;&lt;a href="https://www.airbnb.com/experiences/192793"&gt;&lt;span&gt;Auf Airbnb ansehen&lt;/span&gt;&lt;/a&gt;&lt;a href="https://www.airbnb.com/experiences/192793" rel="nofollow"&gt;Portuguese wine tasting:North to South&lt;/a&gt;&lt;script async="" src="https://www.airbnb.de/embeddable/airbnb_jssdk"&gt;&lt;/script&gt;&lt;/div&gt;&lt;p&gt;High above Barcelona, you enter this spacious paradise through heavy gates. It looks as if nothing could survive on the inhospitable slopes of Montjuïc but a path leads past a pond surrounded by trees. It was peaceful, and the layout – created in 1999 by architect Carlos Ferrater – encourages a slower appreciation of life. I began walking along what looked like a tempting yellow brick road, but was, in fact, a sandy route through what is an expansive nature reserve.&lt;/p&gt;
 &lt;p&gt;This is the perfect place to escape the heat of the summer sun or inclement autumn weather. Each area has been planted with species from Mediterranean climates. There are eucalyptus trees in the Australian garden, tall cypresses on the Cypriot hillside and Latin American giant aloe veras. Labels and brightly coloured maps make it is easy to identify where each variety is from.&lt;/p&gt;
 &lt;p&gt;The garden has gently sloping paths with easy access for all. At the top is the museum, with specimens displaying details of where they originated. The Dr Seuss trees impressed me, their bulbous foliage as fascinating as any of Gaudí’s architectural wonders. These gardens are a living cabinet of curiosities.&lt;/p&gt;
 &lt;p&gt;And now to finish that off, we go out and ask for the world. Yeah, amen.&lt;/p&gt;
@@ -173,7 +192,9 @@ It’s not just would-be voters in the Catalan independence referendum who have 
       "kind": "flickr",
       "albumList2": [
         "72157693115455660",
-        "72157693115424210"
+        "72157693115424210",
+                "72157699088404805",
+                "72157693104260700"
       ],
       "thumbnailWidth": "200",
       "thumbnailHeight": "auto",
@@ -187,160 +208,11 @@ It’s not just would-be voters in the Catalan independence referendum who have 
       "thumbnailAlignment": "center"
     }'&gt;
 
-  &lt;/div&gt;&lt;/div&gt;
-</content><category term="Spanien"></category><category term="Katalonien"></category><category term="Städtetrip"></category></entry><entry><title>Madrid</title><link href="https://henningschmies.github.io/Madrid.html" rel="alternate"></link><published>2018-07-06T01:23:00+02:00</published><updated>2018-07-06T01:23:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2018-07-06:/Madrid.html</id><summary type="html">&lt;p class="first last"&gt;How I spent 3 wonderful days in Barcelona.&lt;/p&gt;
-</summary><content type="html">&lt;p&gt;This article is just a &lt;a class="reference external" href="mailto:stub149035168&amp;#64;N08"&gt;stub149035168&amp;#64;N08&lt;/a&gt;     72157693115455660&lt;/p&gt;
-&lt;iframe src="https://www.google.com/maps/d/u/1/embed?mid=1iysiiERTnoJu-D8tEVplzZYp0vgkd5pV" width="100%" height="480"&gt;&lt;/iframe&gt;&lt;h1&gt;gallery made with nanogallery2&lt;/h1&gt;
+  &lt;/div&gt;&lt;!-- raw: html
 
-  &lt;div id="nanogallery3" data-nanogallery2='{
-      "kind":                      "flickr",
-      "userID":                    "rebeccadaleadler",
-      "photoset":                  "72157657586178051",
-      "thumbnailHeight":           200,
-      "thumbnailWidth":            200,
-      "galleryMosaic":             [
-                                     { "w": 5, "h": 3, "c": 2, "r": 1 },
-                                     { "w": 2, "h": 2, "c": 1, "r": 2 },
-                                     { "w": 2, "h": 2, "c": 7, "r": 2 },
-                                     { "w": 2, "h": 2, "c": 2, "r": 4 },
-                                     { "w": 3, "h": 4, "c": 4, "r": 4 },
-                                     { "w": 3, "h": 4, "c": 7, "r": 4 },
-                                     { "w": 2, "h": 2, "c": 10, "r": 5 },
-                                     { "w": 4, "h": 2, "c": 11, "r": 6 }
-                                   ],
-      "thumbnailGutterWidth":      0,
-      "thumbnailGutterHeight":     0,
-      "thumbnailBorderHorizontal": 5,
-      "thumbnailBorderVertical":   5,
-      "colorScheme": {
-        "thumbnail": {
-          "background": "rgba(218,30,30,1)"
-          "borderColor": "rgba(255,255,255,1)"
-        }
-      },
-      "galleryMaxRows":            1,
-      "galleryDisplayMode":        "rows",
-      "galleryDisplayMode":        "pagination",
-      "thumbnailLabel":            { "display" : false }
-    }'&gt;
-  &lt;/div&gt;&lt;p&gt;And there is no Airbnb to be linked.&lt;/p&gt;
-</content><category term="Spanien"></category><category term="Katalonien"></category><category term="Städtetrip"></category></entry><entry><title>Creating a website using pelican and github pages</title><link href="https://henningschmies.github.io/creating-this-sucker.html" rel="alternate"></link><published>2018-07-05T23:39:00+02:00</published><updated>2018-07-05T23:39:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2018-07-05:/creating-this-sucker.html</id><summary type="html">&lt;p class="first last"&gt;In short, this is how this sucker was created by me.&lt;/p&gt;
-</summary><content type="html">&lt;p&gt;Github Pages.&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;create a new repository names username.github.io and that's already basically it&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;…or create a new repository on the command line&lt;/p&gt;
-&lt;p&gt;echo &amp;quot;# henningschmies.github.io&amp;quot; &amp;gt;&amp;gt; README.md
-git init
-git add README.md
-git commit -m &amp;quot;first commit&amp;quot;
-git remote add origin &lt;a class="reference external" href="https://github.com/HenningSchmies/henningschmies.github.io.git"&gt;https://github.com/HenningSchmies/henningschmies.github.io.git&lt;/a&gt;
-git push -u origin master&lt;/p&gt;
-&lt;div class="section" id="run-on-server"&gt;
-&lt;h2&gt;Run on server&lt;/h2&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Switch to the output directory.&lt;/li&gt;
-&lt;li&gt;Run python -m pelican.server.&lt;/li&gt;
-&lt;li&gt;Visit localhost:8000 in your browser to preview the blog.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You should be able to browse a listing of all the posts in your blog, along with the specific post you created.&lt;/p&gt;
-&lt;p&gt;A good guide on how to set up sites with pelican is from dataquest
-&lt;a class="reference external" href="https://www.dataquest.io/blog/how-to-setup-a-data-science-blog/"&gt;https://www.dataquest.io/blog/how-to-setup-a-data-science-blog/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://gohugo.io/"&gt;https://gohugo.io/&lt;/a&gt;
-&lt;a class="reference external" href="https://themes.gohugo.io/tags/blog/"&gt;https://themes.gohugo.io/tags/blog/&lt;/a&gt;
-&lt;a class="reference external" href="https://themes.gohugo.io/future-imperfect/"&gt;https://themes.gohugo.io/future-imperfect/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;but Hugo requires an installation of Go, so this was discarded for right now.&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://fancyapps.com/fancybox/3/"&gt;http://fancyapps.com/fancybox/3/&lt;/a&gt;
-&lt;a class="reference external" href="https://pypi.org/project/typogrify/"&gt;https://pypi.org/project/typogrify/&lt;/a&gt;&lt;/p&gt;
+&lt;iframe src="data:text/html;charset=utf-8;base64,PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgPHNjcmlwdD5MX1BSRUZFUl9DQU5WQVMgPSBmYWxzZTsgTF9OT19UT1VDSCA9IGZhbHNlOyBMX0RJU0FCTEVfM0QgPSBmYWxzZTs8L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS4yLjAvZGlzdC9sZWFmbGV0LmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2FqYXguZ29vZ2xlYXBpcy5jb20vYWpheC9saWJzL2pxdWVyeS8xLjExLjEvanF1ZXJ5Lm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvanMvYm9vdHN0cmFwLm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvTGVhZmxldC5hd2Vzb21lLW1hcmtlcnMvMi4wLjIvbGVhZmxldC5hd2Vzb21lLW1hcmtlcnMuanMiPjwvc2NyaXB0PgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS4yLjAvZGlzdC9sZWFmbGV0LmNzcyIgLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvY3NzL2Jvb3RzdHJhcC5taW4uY3NzIiAvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiIC8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vZm9udC1hd2Vzb21lLzQuNi4zL2Nzcy9mb250LWF3ZXNvbWUubWluLmNzcyIgLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvTGVhZmxldC5hd2Vzb21lLW1hcmtlcnMvMi4wLjIvbGVhZmxldC5hd2Vzb21lLW1hcmtlcnMuY3NzIiAvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhd2dpdC5jb20vcHl0aG9uLXZpc3VhbGl6YXRpb24vZm9saXVtL21hc3Rlci9mb2xpdW0vdGVtcGxhdGVzL2xlYWZsZXQuYXdlc29tZS5yb3RhdGUuY3NzIiAvPgogICAgPHN0eWxlPmh0bWwsIGJvZHkge3dpZHRoOiAxMDAlO2hlaWdodDogMTAwJTttYXJnaW46IDA7cGFkZGluZzogMDt9PC9zdHlsZT4KICAgIDxzdHlsZT4jbWFwIHtwb3NpdGlvbjphYnNvbHV0ZTt0b3A6MDtib3R0b206MDtyaWdodDowO2xlZnQ6MDt9PC9zdHlsZT4KICAgIAogICAgICAgICAgICA8c3R5bGU+ICNtYXBfMDMxZDQ4OTljN2IyNGRiZTgxMzYyNGU5MzlmOTVjMzggewogICAgICAgICAgICAgICAgcG9zaXRpb24gOiByZWxhdGl2ZTsKICAgICAgICAgICAgICAgIHdpZHRoIDogMTAwLjAlOwogICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAuMCU7CiAgICAgICAgICAgICAgICBsZWZ0OiAwLjAlOwogICAgICAgICAgICAgICAgdG9wOiAwLjAlOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICA8L3N0eWxlPgogICAgICAgIAogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vcmF3Z2l0LmNvbS9tYWtpbmFjb3JwdXMvTGVhZmxldC5UZXh0UGF0aC9sZWFmbGV0MC44LWRldi9sZWFmbGV0LnRleHRwYXRoLmpzIj48L3NjcmlwdD4KPC9oZWFkPgo8Ym9keT4gICAgCiAgICAKICAgICAgICAgICAgPGRpdiBjbGFzcz0iZm9saXVtLW1hcCIgaWQ9Im1hcF8wMzFkNDg5OWM3YjI0ZGJlODEzNjI0ZTkzOWY5NWMzOCIgPjwvZGl2PgogICAgICAgIAo8L2JvZHk+CjxzY3JpcHQ+ICAgIAogICAgCgogICAgICAgICAgICAKICAgICAgICAgICAgICAgIHZhciBib3VuZHMgPSBudWxsOwogICAgICAgICAgICAKCiAgICAgICAgICAgIHZhciBtYXBfMDMxZDQ4OTljN2IyNGRiZTgxMzYyNGU5MzlmOTVjMzggPSBMLm1hcCgKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICdtYXBfMDMxZDQ4OTljN2IyNGRiZTgxMzYyNGU5MzlmOTVjMzgnLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAge2NlbnRlcjogWzUxLjg0MTgyNzYsNy44MzU5OTIxXSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHpvb206IDQsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtYXhCb3VuZHM6IGJvdW5kcywKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxheWVyczogW10sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB3b3JsZENvcHlKdW1wOiBmYWxzZSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNyczogTC5DUlMuRVBTRzM4NTcKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfSk7CiAgICAgICAgICAgIAogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciB0aWxlX2xheWVyXzY0ODRhZDVhOGNkNzQ5NzFiZjNlYTk5YmY1YzRkNGI0ID0gTC50aWxlTGF5ZXIoCiAgICAgICAgICAgICAgICAnaHR0cHM6Ly97c30udGlsZS5vcGVuc3RyZWV0bWFwLm9yZy97en0ve3h9L3t5fS5wbmcnLAogICAgICAgICAgICAgICAgewogICJhdHRyaWJ1dGlvbiI6IG51bGwsCiAgImRldGVjdFJldGluYSI6IGZhbHNlLAogICJtYXhab29tIjogMTgsCiAgIm1pblpvb20iOiAxLAogICJub1dyYXAiOiBmYWxzZSwKICAic3ViZG9tYWlucyI6ICJhYmMiCn0KICAgICAgICAgICAgICAgICkuYWRkVG8obWFwXzAzMWQ0ODk5YzdiMjRkYmU4MTM2MjRlOTM5Zjk1YzM4KTsKICAgICAgICAKICAgIAogICAgICAgICAgICAgICAgdmFyIHBvbHlfbGluZV9hZTkwYmE5MjY5MGQ0MzY2YTRiZjIyODQyNTJjYTlhYyA9IEwucG9seWxpbmUoCiAgICAgICAgICAgICAgICAgICAgW1s1MC44NzA3MTY4LCA3LjEzODU0NTddLCBbNjkuNzIxNjI2MSwgMjkuODgxNDAyN11dLAogICAgICAgICAgICAgICAgICAgIHsKICAiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsCiAgImNvbG9yIjogImJsYWNrIiwKICAiZGFzaEFycmF5IjogbnVsbCwKICAiZGFzaE9mZnNldCI6IG51bGwsCiAgImZpbGwiOiBmYWxzZSwKICAiZmlsbENvbG9yIjogImJsYWNrIiwKICAiZmlsbE9wYWNpdHkiOiAwLjIsCiAgImZpbGxSdWxlIjogImV2ZW5vZGQiLAogICJsaW5lQ2FwIjogInJvdW5kIiwKICAibGluZUpvaW4iOiAicm91bmQiLAogICJub0NsaXAiOiBmYWxzZSwKICAib3BhY2l0eSI6IDEuMCwKICAic21vb3RoRmFjdG9yIjogMS4wLAogICJzdHJva2UiOiB0cnVlLAogICJ3ZWlnaHQiOiAxCn0pLmFkZFRvKG1hcF8wMzFkNDg5OWM3YjI0ZGJlODEzNjI0ZTkzOWY5NWMzOCk7CiAgICAgICAgICAgIAogICAgCiAgICAgICAgICAgICAgICBwb2x5X2xpbmVfYWU5MGJhOTI2OTBkNDM2NmE0YmYyMjg0MjUyY2E5YWMuc2V0VGV4dCgi8J+amSAgICAgIPCfmpkiLCB7CiAgICAgICAgICAgICAgICAgICAgcmVwZWF0OiB0cnVlLAogICAgICAgICAgICAgICAgICAgIGNlbnRlcjogZmFsc2UsCiAgICAgICAgICAgICAgICAgICAgYmVsb3c6IGZhbHNlLAogICAgICAgICAgICAgICAgICAgIG9mZnNldDogOCwKICAgICAgICAgICAgICAgICAgICBvcmllbnRhdGlvbjogMCwKICAgICAgICAgICAgICAgICAgICBhdHRyaWJ1dGVzOiB7J2ZvbnQtc2l6ZSc6ICcyNCcsICdmb250LXdlaWdodCc6ICdib2xkJ30KICAgICAgICAgICAgICAgIH0pOwogICAgICAgICAgICAKICAgIAogICAgICAgICAgICAgICAgdmFyIHBvbHlfbGluZV82MjRmZTIzODA3YTY0YzczODkxZWUwMWU3YTVjMjM3YSA9IEwucG9seWxpbmUoCiAgICAgICAgICAgICAgICAgICAgW1s1MS44NDE4Mjc2LCA3LjgzNTk5MjFdLCBbNTMuNTU4NjUyNiwgOS42NDc2MzgzXSwgWzU1LjY3MTM0NDIsIDEyLjUyMzc4NDFdLCBbNTkuODkzOTUyOSwgMTAuNjQ1MDMzOV0sIFs2MC4zNjUyMzA2LCA1LjE0ODk5MjVdLCBbNjcuMjkxNiwgMTQuNDEyNTE4Nl0sIFs3MS4xNzA5NTUsIDI1Ljc4MTQ3MTJdXSwKICAgICAgICAgICAgICAgICAgICB7CiAgImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLAogICJjb2xvciI6ICIjMzM4OGZmIiwKICAiZGFzaEFycmF5IjogbnVsbCwKICAiZGFzaE9mZnNldCI6IG51bGwsCiAgImZpbGwiOiBmYWxzZSwKICAiZmlsbENvbG9yIjogIiMzMzg4ZmYiLAogICJmaWxsT3BhY2l0eSI6IDAuMiwKICAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsCiAgImxpbmVDYXAiOiAicm91bmQiLAogICJsaW5lSm9pbiI6ICJyb3VuZCIsCiAgIm5vQ2xpcCI6IGZhbHNlLAogICJvcGFjaXR5IjogMS4wLAogICJzbW9vdGhGYWN0b3IiOiAxLjAsCiAgInN0cm9rZSI6IHRydWUsCiAgIndlaWdodCI6IDMKfSkuYWRkVG8obWFwXzAzMWQ0ODk5YzdiMjRkYmU4MTM2MjRlOTM5Zjk1YzM4KTsKICAgICAgICAgICAgCiAgICAKICAgICAgICAgICAgICAgIHBvbHlfbGluZV82MjRmZTIzODA3YTY0YzczODkxZWUwMWU3YTVjMjM3YS5zZXRUZXh0KCJadW0gTm9yZGthcCIsIHsKICAgICAgICAgICAgICAgICAgICByZXBlYXQ6IGZhbHNlLAogICAgICAgICAgICAgICAgICAgIGNlbnRlcjogZmFsc2UsCiAgICAgICAgICAgICAgICAgICAgYmVsb3c6IGZhbHNlLAogICAgICAgICAgICAgICAgICAgIG9mZnNldDogLTUsCiAgICAgICAgICAgICAgICAgICAgb3JpZW50YXRpb246IDAsCiAgICAgICAgICAgICAgICAgICAgYXR0cmlidXRlczogTm9uZQogICAgICAgICAgICAgICAgfSk7CiAgICAgICAgICAgIAo8L3NjcmlwdD4=" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""&gt;&lt;/iframe&gt; --&gt;
 &lt;/div&gt;
-&lt;div class="section" id="functionality"&gt;
-&lt;h2&gt;Functionality&lt;/h2&gt;
-&lt;p&gt;Apparrently you can add all content via these two directives. Let's see how they come out...&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;
-.. raw:: html
-
- &amp;lt;iframe src=&amp;quot;https://www.google.com/maps/d/u/1/embed?mid=1iysiiERTnoJu-D8tEVplzZYp0vgkd5pV&amp;quot; width=&amp;quot;100%&amp;quot; height=&amp;quot;480&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;
-&lt;/pre&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.. raw:: html
-
- &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://www.google.com/maps/d/u/1/embed?mid=1iysiiERTnoJu-D8tEVplzZYp0vgkd5pV&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;100%&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;480&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;iframe&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Ok, uploading to nanogallery2 is definitly working in generell. I just need to adjust the creation of adequate thumbnails and see if the results of the gallery will be reasonable.
-It turns out that IrfanView renders way better thumbnails... I need to see if there is an automatic way to do this and to feed more comments to the nanogallery. Also I will go into testing layouts.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="plugins"&gt;
-&lt;h2&gt;Plugins&lt;/h2&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://docs.getpelican.com/en/3.6.3/plugins.html#how-to-use-plugins"&gt;http://docs.getpelican.com/en/3.6.3/plugins.html#how-to-use-plugins&lt;/a&gt;
-&lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins"&gt;https://github.com/getpelican/pelican-plugins&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Gallery
-Jinja2Content &lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/jinja2content"&gt;https://github.com/getpelican/pelican-plugins/tree/master/jinja2content&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;ical &lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/ical"&gt;https://github.com/getpelican/pelican-plugins/tree/master/ical&lt;/a&gt;
-series &lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/series"&gt;https://github.com/getpelican/pelican-plugins/tree/master/series&lt;/a&gt;
-tag_cloud &lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/tag_cloud"&gt;https://github.com/getpelican/pelican-plugins/tree/master/tag_cloud&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;sitemap
-simple footnotes
-share post
-pelican_javascript?&lt;/p&gt;
-&lt;p&gt;pelican-entities by AlexJF&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="themes"&gt;
-&lt;h2&gt;Themes&lt;/h2&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://www.pelicanthemes.com/"&gt;http://www.pelicanthemes.com/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://jasonstitt.com/tech-blog-pelican-git"&gt;https://jasonstitt.com/tech-blog-pelican-git&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="assets"&gt;
-&lt;h2&gt;Assets&lt;/h2&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://github.com/getpelican/pelican-plugins/tree/master/assets"&gt;https://github.com/getpelican/pelican-plugins/tree/master/assets&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="to-do"&gt;
-&lt;h2&gt;To Do&lt;/h2&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;Integrate a gallery, if possible the &lt;a class="reference external" href="https://github.com/nanogallery2"&gt;nanogallery2&lt;/a&gt;  and try to make it possible to have to gallaries in one single article.&lt;/li&gt;
-&lt;li&gt;Enable disqus (Don't really know why its not working)&lt;/li&gt;
-&lt;li&gt;Install plugin assets, neighbors&lt;/li&gt;
-&lt;li&gt;Find efficient ways to get the pictures with the right solution into the right places.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://www.jacklmoore.com/colorbox"&gt;http://www.jacklmoore.com/colorbox&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://pypi.python.org/pypi/typogrify"&gt;http://pypi.python.org/pypi/typogrify&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Ok, what I'm trying to do now, is include multiple libraries via a neat trick unsing something like:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;
-% if field.name.startswith('i-') %
-&lt;/pre&gt;
-&lt;p&gt;Ok, since the templating does not work as I wanted it to, we have to thing of something else.&lt;/p&gt;
-&lt;p&gt;It appear I have to write a real nanogallery2 template to get this done.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="using-flickr-with-nanogallery2"&gt;
-&lt;h2&gt;Using Flickr with Nanogallery2&lt;/h2&gt;
-&lt;p&gt;&lt;a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html"&gt;http://docutils.sourceforge.net/docs/user/rst/quickref.html&lt;/a&gt;
-&lt;a class="reference external" href="http://docutils.sourceforge.net/docs/howto/rst-roles.html"&gt;http://docutils.sourceforge.net/docs/howto/rst-roles.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://stackoverflow.com/questions/7250659/how-to-use-python-to-programmatically-generate-part-of-sphinx-documentation"&gt;https://stackoverflow.com/questions/7250659/how-to-use-python-to-programmatically-generate-part-of-sphinx-documentation&lt;/a&gt;    see how to create a rst directive?&lt;/p&gt;
-&lt;p&gt;The alternative would be to use something like masonry &lt;a class="reference external" href="https://github.com/desandro/masonry"&gt;https://github.com/desandro/masonry&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="error-messages-and-remedies"&gt;
-&lt;h2&gt;Error Messages and remedies&lt;/h2&gt;
-&lt;ul class="simple"&gt;
-&lt;li&gt;&lt;dl class="first docutils"&gt;
-&lt;dt&gt;could not find information about title&lt;/dt&gt;
-&lt;dd&gt;either add title meta data when regular article or you need to avoid the file's compilation&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="section" id="abbreviations"&gt;
-&lt;h2&gt;Abbreviations&lt;/h2&gt;
-&lt;p&gt;This will be turned into &lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;.&lt;/p&gt;
-&lt;p&gt;Examples
-- &lt;a class="reference external" href="https://jasonstitt.com/"&gt;https://jasonstitt.com/&lt;/a&gt;
-- &lt;a class="reference external" href="http://www.erikjohanssonphoto.com/"&gt;http://www.erikjohanssonphoto.com/&lt;/a&gt;
-- &lt;a class="reference external" href="https://standage.github.io/pages/notebook-setup.html"&gt;https://standage.github.io/pages/notebook-setup.html&lt;/a&gt;
-- &lt;a class="reference external" href="https://www.robertputt.co.uk/goodbye-wordpress-hello-static-blog.html"&gt;https://www.robertputt.co.uk/goodbye-wordpress-hello-static-blog.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://github.com/hunt3r/pelican-gallery"&gt;https://github.com/hunt3r/pelican-gallery&lt;/a&gt;    second type of gallery&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://github.com/micahjsmith/cambridge-half-analysis"&gt;https://github.com/micahjsmith/cambridge-half-analysis&lt;/a&gt;
-&lt;a class="reference external" href="https://github.com/micahjsmith/paper-template"&gt;https://github.com/micahjsmith/paper-template&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://github.com/micahjsmith/micahjsmith.github.io"&gt;https://github.com/micahjsmith/micahjsmith.github.io&lt;/a&gt;
-&lt;a class="reference external" href="https://www.micahsmith.com/"&gt;https://www.micahsmith.com/&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-</content><category term="python pelican set-up github-hosting"></category></entry><entry><title>Creating a website using pelican and github pages</title><link href="https://henningschmies.github.io/creating-this-sucker-fr.html" rel="alternate"></link><published>2018-07-05T23:39:00+02:00</published><updated>2018-07-05T23:39:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2018-07-05:/creating-this-sucker-fr.html</id><summary type="html">&lt;p class="first last"&gt;In short, this is how this sucker was created by me.&lt;/p&gt;
+</content><category term="Spanien"></category><category term="Katalonien"></category><category term="Städtetrip"></category></entry><entry><title>Creating a website using pelican and github pages</title><link href="https://henningschmies.github.io/creating-this-sucker-fr.html" rel="alternate"></link><published>2018-07-05T23:39:00+02:00</published><updated>2018-07-05T23:39:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2018-07-05:/creating-this-sucker-fr.html</id><summary type="html">&lt;p class="first last"&gt;In short, this is how this sucker was created by me.&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;Github Pages.&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;create a new repository names username.github.io and that's already basically it&lt;/li&gt;
@@ -5000,10 +4872,4 @@ ILgCAADAFAiuAAAAMAWCKwAAAEyB4AoAAABT+D+7d+ntNLABxwAAAABJRU5ErkJggg==
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="python"></category></entry><entry><title>Gitignore Exmaples</title><link href="https://henningschmies.github.io/first-post.html" rel="alternate"></link><published>2016-06-08T20:00:00+02:00</published><updated>2016-06-08T20:00:00+02:00</updated><author><name>Henning Schmies</name></author><id>tag:henningschmies.github.io,2016-06-08:/first-post.html</id><summary type="html">&lt;p class="first last"&gt;My first post, read it to find out.&lt;/p&gt;
-</summary><content type="html">&lt;p&gt;# Ignore everything
-*&lt;/p&gt;
-&lt;p&gt;#But not these files...
-!.enc&lt;/p&gt;
-&lt;p&gt;use it/try it in &amp;quot;C:UsersH.SchmiesDocumentsGitHubListsDatabases.gitignore&amp;quot;&lt;/p&gt;
-</content><category term="python firsts"></category></entry></feed>
+</content><category term="python"></category></entry></feed>
