@@ -1,0 +1,2160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Calibrating the Heston Model using Scipy and many others | Worldbeater dispatch
+</title>
+  <link rel="canonical" href="https://henningschmies.github.io/heston-calibration-scipy-many.html">
+
+  <link rel="alternate" type="application/atom+xml" href="https://henningschmies.github.io/feeds/all.atom.xml" title="Full Atom Feed">
+  <link rel="alternate" type="application/atom+xml" href="https://henningschmies.github.io/feeds/posts.atom.xml" title="Categories Atom Feed">
+
+
+  <link rel="stylesheet" href="https://henningschmies.github.io/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://henningschmies.github.io/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://henningschmies.github.io/theme/css/pygments/default.min.css">
+  <link rel="stylesheet" href="https://henningschmies.github.io/theme/css/style.css">
+
+
+<meta name="description" content="Calibrating the Heston Model using Scipy and many others">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <link href="https://unpkg.com/nanogallery2/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://unpkg.com/nanogallery2/dist/jquery.nanogallery2.min.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="title"><a href="https://henningschmies.github.io">Worldbeater dispatch</a></h1>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
+            <li class="list-inline-item"><a href="http://python.org/" target="_blank">Python.org</a></li>
+            <li class="list-inline-item"><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+            <li class="list-inline-item"><a href="#" target="_blank">You can modify those links in your config file</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>Calibrating the Heston Model using Scipy and many others
+</h1>
+      <hr>
+<article class="article">
+  <header>
+    <ul class="list-inline">
+      <li class="list-inline-item text-muted" title="2018-06-18T20:00:00+02:00">
+        <i class="fa fa-clock-o"></i>
+        Mo 18 Juni 2018
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="https://henningschmies.github.io/category/posts.html">posts</a>
+      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-user-o"></i>
+        <a href="https://henningschmies.github.io/author/henning.html">Henning</a>      </li>
+      <li class="list-inline-item">
+        <i class="fa fa-files-o"></i>
+        <a href="https://henningschmies.github.io/tag/python.html">#python</a>      </li>
+    </ul>
+  </header>
+  <div class="content">
+    <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Heston-Model-Parameter-Calibration-in-QuantLib-Python-&amp;-Scipy">Heston Model Parameter Calibration in QuantLib Python &amp; Scipy<a class="anchor-link" href="#Heston-Model-Parameter-Calibration-in-QuantLib-Python-&amp;-Scipy">¶</a></h1><p><a href="http://gouthamanbalaraman.com">Goutham Balaraman</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I have discussed parameter calibration in a couple of my earlier posts. In this post I want to show how you can use QuantLib Python and Scipy to do parameter calibration. In order to run this, you will need to build the QuantLib github master and the latest SWIG code with <a href="https://github.com/lballabio/QuantLib-SWIG/pull/26">my pull request</a>. Alternately, this should get merged into version 1.9 and you should be able to use it when it is released. This pull request adds some of the moethods of the <code>CalibratedModel</code> such as <code>calibrationError</code> that we will use in calibrating models using Scipy. QuantLib's strength is all financial models. Scipy's strength is all the solvers and numerical methods. So here, I will show you how you can make the best of both worlds. We will start as usual by importing the modules.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">QuantLib</span> <span class="k">as</span> <span class="nn">ql</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">sqrt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="k">import</span> <span class="n">root</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's construct some of the basic dependencies such as the yield and dividend term structures.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">day_count</span> <span class="o">=</span> <span class="n">ql</span><span class="o">.</span><span class="n">Actual365Fixed</span><span class="p">()</span>
+<span class="n">calendar</span> <span class="o">=</span> <span class="n">ql</span><span class="o">.</span><span class="n">UnitedStates</span><span class="p">()</span>
+<span class="n">calculation_date</span> <span class="o">=</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2015</span><span class="p">)</span>
+
+<span class="n">spot</span> <span class="o">=</span> <span class="mf">659.37</span>
+<span class="n">ql</span><span class="o">.</span><span class="n">Settings</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">evaluationDate</span> <span class="o">=</span> <span class="n">calculation_date</span>
+
+<span class="n">risk_free_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">dividend_rate</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">yield_ts</span> <span class="o">=</span> <span class="n">ql</span><span class="o">.</span><span class="n">YieldTermStructureHandle</span><span class="p">(</span>
+    <span class="n">ql</span><span class="o">.</span><span class="n">FlatForward</span><span class="p">(</span><span class="n">calculation_date</span><span class="p">,</span> <span class="n">risk_free_rate</span><span class="p">,</span> <span class="n">day_count</span><span class="p">))</span>
+<span class="n">dividend_ts</span> <span class="o">=</span> <span class="n">ql</span><span class="o">.</span><span class="n">YieldTermStructureHandle</span><span class="p">(</span>
+    <span class="n">ql</span><span class="o">.</span><span class="n">FlatForward</span><span class="p">(</span><span class="n">calculation_date</span><span class="p">,</span> <span class="n">dividend_rate</span><span class="p">,</span> <span class="n">day_count</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Following is a sample grid of volatilities for different expiration and strikes.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">expiration_dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">2015</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2016</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2016</span><span class="p">),</span>
+                    <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2016</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2016</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2016</span><span class="p">),</span> 
+                    <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2016</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2016</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2016</span><span class="p">),</span>
+                    <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2016</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2016</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">2016</span><span class="p">),</span> 
+                    <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">2016</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2017</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2017</span><span class="p">),</span>
+                    <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2017</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2017</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2017</span><span class="p">),</span> 
+                    <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2017</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2017</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2017</span><span class="p">),</span>
+                    <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2017</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2017</span><span class="p">),</span> <span class="n">ql</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">2017</span><span class="p">)]</span>
+<span class="n">strikes</span> <span class="o">=</span> <span class="p">[</span><span class="mf">527.50</span><span class="p">,</span> <span class="mf">560.46</span><span class="p">,</span> <span class="mf">593.43</span><span class="p">,</span> <span class="mf">626.40</span><span class="p">,</span> <span class="mf">659.37</span><span class="p">,</span> <span class="mf">692.34</span><span class="p">,</span> <span class="mf">725.31</span><span class="p">,</span> <span class="mf">758.28</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="mf">0.37819</span><span class="p">,</span> <span class="mf">0.34177</span><span class="p">,</span> <span class="mf">0.30394</span><span class="p">,</span> <span class="mf">0.27832</span><span class="p">,</span> <span class="mf">0.26453</span><span class="p">,</span> <span class="mf">0.25916</span><span class="p">,</span> <span class="mf">0.25941</span><span class="p">,</span> <span class="mf">0.26127</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.3445</span><span class="p">,</span> <span class="mf">0.31769</span><span class="p">,</span> <span class="mf">0.2933</span><span class="p">,</span> <span class="mf">0.27614</span><span class="p">,</span> <span class="mf">0.26575</span><span class="p">,</span> <span class="mf">0.25729</span><span class="p">,</span> <span class="mf">0.25228</span><span class="p">,</span> <span class="mf">0.25202</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.37419</span><span class="p">,</span> <span class="mf">0.35372</span><span class="p">,</span> <span class="mf">0.33729</span><span class="p">,</span> <span class="mf">0.32492</span><span class="p">,</span> <span class="mf">0.31601</span><span class="p">,</span> <span class="mf">0.30883</span><span class="p">,</span> <span class="mf">0.30036</span><span class="p">,</span> <span class="mf">0.29568</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.37498</span><span class="p">,</span> <span class="mf">0.35847</span><span class="p">,</span> <span class="mf">0.34475</span><span class="p">,</span> <span class="mf">0.33399</span><span class="p">,</span> <span class="mf">0.32715</span><span class="p">,</span> <span class="mf">0.31943</span><span class="p">,</span> <span class="mf">0.31098</span><span class="p">,</span> <span class="mf">0.30506</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35941</span><span class="p">,</span> <span class="mf">0.34516</span><span class="p">,</span> <span class="mf">0.33296</span><span class="p">,</span> <span class="mf">0.32275</span><span class="p">,</span> <span class="mf">0.31867</span><span class="p">,</span> <span class="mf">0.30969</span><span class="p">,</span> <span class="mf">0.30239</span><span class="p">,</span> <span class="mf">0.29631</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35521</span><span class="p">,</span> <span class="mf">0.34242</span><span class="p">,</span> <span class="mf">0.33154</span><span class="p">,</span> <span class="mf">0.3219</span><span class="p">,</span> <span class="mf">0.31948</span><span class="p">,</span> <span class="mf">0.31096</span><span class="p">,</span> <span class="mf">0.30424</span><span class="p">,</span> <span class="mf">0.2984</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35442</span><span class="p">,</span> <span class="mf">0.34267</span><span class="p">,</span> <span class="mf">0.33288</span><span class="p">,</span> <span class="mf">0.32374</span><span class="p">,</span> <span class="mf">0.32245</span><span class="p">,</span> <span class="mf">0.31474</span><span class="p">,</span> <span class="mf">0.30838</span><span class="p">,</span> <span class="mf">0.30283</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35384</span><span class="p">,</span> <span class="mf">0.34286</span><span class="p">,</span> <span class="mf">0.33386</span><span class="p">,</span> <span class="mf">0.32507</span><span class="p">,</span> <span class="mf">0.3246</span><span class="p">,</span> <span class="mf">0.31745</span><span class="p">,</span> <span class="mf">0.31135</span><span class="p">,</span> <span class="mf">0.306</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35338</span><span class="p">,</span> <span class="mf">0.343</span><span class="p">,</span> <span class="mf">0.33464</span><span class="p">,</span> <span class="mf">0.32614</span><span class="p">,</span> <span class="mf">0.3263</span><span class="p">,</span> <span class="mf">0.31961</span><span class="p">,</span> <span class="mf">0.31371</span><span class="p">,</span> <span class="mf">0.30852</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35301</span><span class="p">,</span> <span class="mf">0.34312</span><span class="p">,</span> <span class="mf">0.33526</span><span class="p">,</span> <span class="mf">0.32698</span><span class="p">,</span> <span class="mf">0.32766</span><span class="p">,</span> <span class="mf">0.32132</span><span class="p">,</span> <span class="mf">0.31558</span><span class="p">,</span> <span class="mf">0.31052</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35272</span><span class="p">,</span> <span class="mf">0.34322</span><span class="p">,</span> <span class="mf">0.33574</span><span class="p">,</span> <span class="mf">0.32765</span><span class="p">,</span> <span class="mf">0.32873</span><span class="p">,</span> <span class="mf">0.32267</span><span class="p">,</span> <span class="mf">0.31705</span><span class="p">,</span> <span class="mf">0.31209</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35246</span><span class="p">,</span> <span class="mf">0.3433</span><span class="p">,</span> <span class="mf">0.33617</span><span class="p">,</span> <span class="mf">0.32822</span><span class="p">,</span> <span class="mf">0.32965</span><span class="p">,</span> <span class="mf">0.32383</span><span class="p">,</span> <span class="mf">0.31831</span><span class="p">,</span> <span class="mf">0.31344</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35226</span><span class="p">,</span> <span class="mf">0.34336</span><span class="p">,</span> <span class="mf">0.33651</span><span class="p">,</span> <span class="mf">0.32869</span><span class="p">,</span> <span class="mf">0.3304</span><span class="p">,</span> <span class="mf">0.32477</span><span class="p">,</span> <span class="mf">0.31934</span><span class="p">,</span> <span class="mf">0.31453</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35207</span><span class="p">,</span> <span class="mf">0.34342</span><span class="p">,</span> <span class="mf">0.33681</span><span class="p">,</span> <span class="mf">0.32911</span><span class="p">,</span> <span class="mf">0.33106</span><span class="p">,</span> <span class="mf">0.32561</span><span class="p">,</span> <span class="mf">0.32025</span><span class="p">,</span> <span class="mf">0.3155</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35171</span><span class="p">,</span> <span class="mf">0.34327</span><span class="p">,</span> <span class="mf">0.33679</span><span class="p">,</span> <span class="mf">0.32931</span><span class="p">,</span> <span class="mf">0.3319</span><span class="p">,</span> <span class="mf">0.32665</span><span class="p">,</span> <span class="mf">0.32139</span><span class="p">,</span> <span class="mf">0.31675</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35128</span><span class="p">,</span> <span class="mf">0.343</span><span class="p">,</span> <span class="mf">0.33658</span><span class="p">,</span> <span class="mf">0.32937</span><span class="p">,</span> <span class="mf">0.33276</span><span class="p">,</span> <span class="mf">0.32769</span><span class="p">,</span> <span class="mf">0.32255</span><span class="p">,</span> <span class="mf">0.31802</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35086</span><span class="p">,</span> <span class="mf">0.34274</span><span class="p">,</span> <span class="mf">0.33637</span><span class="p">,</span> <span class="mf">0.32943</span><span class="p">,</span> <span class="mf">0.3336</span><span class="p">,</span> <span class="mf">0.32872</span><span class="p">,</span> <span class="mf">0.32368</span><span class="p">,</span> <span class="mf">0.31927</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35049</span><span class="p">,</span> <span class="mf">0.34252</span><span class="p">,</span> <span class="mf">0.33618</span><span class="p">,</span> <span class="mf">0.32948</span><span class="p">,</span> <span class="mf">0.33432</span><span class="p">,</span> <span class="mf">0.32959</span><span class="p">,</span> <span class="mf">0.32465</span><span class="p">,</span> <span class="mf">0.32034</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.35016</span><span class="p">,</span> <span class="mf">0.34231</span><span class="p">,</span> <span class="mf">0.33602</span><span class="p">,</span> <span class="mf">0.32953</span><span class="p">,</span> <span class="mf">0.33498</span><span class="p">,</span> <span class="mf">0.3304</span><span class="p">,</span> <span class="mf">0.32554</span><span class="p">,</span> <span class="mf">0.32132</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.34986</span><span class="p">,</span> <span class="mf">0.34213</span><span class="p">,</span> <span class="mf">0.33587</span><span class="p">,</span> <span class="mf">0.32957</span><span class="p">,</span> <span class="mf">0.33556</span><span class="p">,</span> <span class="mf">0.3311</span><span class="p">,</span> <span class="mf">0.32631</span><span class="p">,</span> <span class="mf">0.32217</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.34959</span><span class="p">,</span> <span class="mf">0.34196</span><span class="p">,</span> <span class="mf">0.33573</span><span class="p">,</span> <span class="mf">0.32961</span><span class="p">,</span> <span class="mf">0.3361</span><span class="p">,</span> <span class="mf">0.33176</span><span class="p">,</span> <span class="mf">0.32704</span><span class="p">,</span> <span class="mf">0.32296</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.34934</span><span class="p">,</span> <span class="mf">0.34181</span><span class="p">,</span> <span class="mf">0.33561</span><span class="p">,</span> <span class="mf">0.32964</span><span class="p">,</span> <span class="mf">0.33658</span><span class="p">,</span> <span class="mf">0.33235</span><span class="p">,</span> <span class="mf">0.32769</span><span class="p">,</span> <span class="mf">0.32368</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.34912</span><span class="p">,</span> <span class="mf">0.34167</span><span class="p">,</span> <span class="mf">0.3355</span><span class="p">,</span> <span class="mf">0.32967</span><span class="p">,</span> <span class="mf">0.33701</span><span class="p">,</span> <span class="mf">0.33288</span><span class="p">,</span> <span class="mf">0.32827</span><span class="p">,</span> <span class="mf">0.32432</span><span class="p">],</span>
+<span class="p">[</span><span class="mf">0.34891</span><span class="p">,</span> <span class="mf">0.34154</span><span class="p">,</span> <span class="mf">0.33539</span><span class="p">,</span> <span class="mf">0.3297</span><span class="p">,</span> <span class="mf">0.33742</span><span class="p">,</span> <span class="mf">0.33337</span><span class="p">,</span> <span class="mf">0.32881</span><span class="p">,</span> <span class="mf">0.32492</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I have abstracted some of the repetitive methods into python functions. The function <code>setup_helpers</code> will construct the Heston model helpers and returns an array of these objects. The <code>cost_function_generator</code> is a method to set the cost function and will be used by the Scipy modules. The <code>calibration_report</code> lets us evaluate the quality of the fit. The <code>setup_model</code> method initializes the <code>HestonModel</code> and the <code>AnalyticHestonEngine</code> prior to calibration.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">setup_helpers</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">expiration_dates</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> 
+                  <span class="n">data</span><span class="p">,</span> <span class="n">ref_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">yield_ts</span><span class="p">,</span> 
+                  <span class="n">dividend_ts</span><span class="p">):</span>
+    <span class="n">heston_helpers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">grid_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">date</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">expiration_dates</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">strikes</span><span class="p">):</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">date</span> <span class="o">-</span> <span class="n">ref_date</span> <span class="p">)</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">ql</span><span class="o">.</span><span class="n">Period</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ql</span><span class="o">.</span><span class="n">Days</span><span class="p">)</span>
+            <span class="n">vols</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">helper</span> <span class="o">=</span> <span class="n">ql</span><span class="o">.</span><span class="n">HestonModelHelper</span><span class="p">(</span>
+                <span class="n">p</span><span class="p">,</span> <span class="n">calendar</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> 
+                <span class="n">ql</span><span class="o">.</span><span class="n">QuoteHandle</span><span class="p">(</span><span class="n">ql</span><span class="o">.</span><span class="n">SimpleQuote</span><span class="p">(</span><span class="n">vols</span><span class="p">)),</span>
+                <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span><span class="p">)</span>
+            <span class="n">helper</span><span class="o">.</span><span class="n">setPricingEngine</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+            <span class="n">heston_helpers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">helper</span><span class="p">)</span>
+            <span class="n">grid_data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">date</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">heston_helpers</span><span class="p">,</span> <span class="n">grid_data</span>
+
+<span class="k">def</span> <span class="nf">cost_function_generator</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">helpers</span><span class="p">,</span><span class="n">norm</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">cost_function</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+        <span class="n">params_</span> <span class="o">=</span> <span class="n">ql</span><span class="o">.</span><span class="n">Array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="n">params_</span><span class="p">)</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="o">.</span><span class="n">calibrationError</span><span class="p">()</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">helpers</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">norm</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">error</span>
+    <span class="k">return</span> <span class="n">cost_function</span>
+
+<span class="k">def</span> <span class="nf">calibration_report</span><span class="p">(</span><span class="n">helpers</span><span class="p">,</span> <span class="n">grid_data</span><span class="p">,</span> <span class="n">detailed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">avg</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="s2">"</span><span class="si">%15s</span><span class="s2"> </span><span class="si">%25s</span><span class="s2"> </span><span class="si">%15s</span><span class="s2"> </span><span class="si">%15s</span><span class="s2"> </span><span class="si">%20s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="s2">"Strikes"</span><span class="p">,</span> <span class="s2">"Expiry"</span><span class="p">,</span> <span class="s2">"Market Value"</span><span class="p">,</span> 
+             <span class="s2">"Model Value"</span><span class="p">,</span> <span class="s2">"Relative Error (%)"</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">100</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">opt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">helpers</span><span class="p">):</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">modelValue</span><span class="p">()</span><span class="o">/</span><span class="n">opt</span><span class="o">.</span><span class="n">marketValue</span><span class="p">()</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">date</span><span class="p">,</span><span class="n">strike</span> <span class="o">=</span> <span class="n">grid_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="s2">"</span><span class="si">%15.2f</span><span class="s2"> </span><span class="si">%25s</span><span class="s2"> </span><span class="si">%14.5f</span><span class="s2"> </span><span class="si">%15.5f</span><span class="s2"> </span><span class="si">%20.7f</span><span class="s2"> "</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="n">strike</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">date</span><span class="p">),</span> <span class="n">opt</span><span class="o">.</span><span class="n">marketValue</span><span class="p">(),</span> 
+                <span class="n">opt</span><span class="o">.</span><span class="n">modelValue</span><span class="p">(),</span> 
+                <span class="mf">100.0</span><span class="o">*</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">modelValue</span><span class="p">()</span><span class="o">/</span><span class="n">opt</span><span class="o">.</span><span class="n">marketValue</span><span class="p">()</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">))</span>
+        <span class="n">avg</span> <span class="o">+=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="n">avg</span> <span class="o">=</span> <span class="n">avg</span><span class="o">*</span><span class="mf">100.0</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">helpers</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">detailed</span><span class="p">:</span> <span class="nb">print</span> <span class="s2">"-"</span><span class="o">*</span><span class="mi">100</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="s2">"Average Abs Error (</span><span class="si">%%</span><span class="s2">) : </span><span class="si">%5.9f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">avg</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="n">summary</span>
+    <span class="k">return</span> <span class="n">avg</span>
+    
+<span class="k">def</span> <span class="nf">setup_model</span><span class="p">(</span><span class="n">_yield_ts</span><span class="p">,</span> <span class="n">_dividend_ts</span><span class="p">,</span> <span class="n">_spot</span><span class="p">,</span> 
+                <span class="n">init_condition</span><span class="o">=</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.01</span><span class="p">)):</span>
+    <span class="n">theta</span><span class="p">,</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">v0</span> <span class="o">=</span> <span class="n">init_condition</span>
+    <span class="n">process</span> <span class="o">=</span> <span class="n">ql</span><span class="o">.</span><span class="n">HestonProcess</span><span class="p">(</span><span class="n">_yield_ts</span><span class="p">,</span> <span class="n">_dividend_ts</span><span class="p">,</span> 
+                           <span class="n">ql</span><span class="o">.</span><span class="n">QuoteHandle</span><span class="p">(</span><span class="n">ql</span><span class="o">.</span><span class="n">SimpleQuote</span><span class="p">(</span><span class="n">_spot</span><span class="p">)),</span> 
+                           <span class="n">v0</span><span class="p">,</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">rho</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ql</span><span class="o">.</span><span class="n">HestonModel</span><span class="p">(</span><span class="n">process</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">ql</span><span class="o">.</span><span class="n">AnalyticHestonEngine</span><span class="p">(</span><span class="n">model</span><span class="p">)</span> 
+    <span class="k">return</span> <span class="n">model</span><span class="p">,</span> <span class="n">engine</span>
+<span class="n">summary</span><span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Comparing-Different-Calibration-Methods">Comparing Different Calibration Methods<a class="anchor-link" href="#Comparing-Different-Calibration-Methods">¶</a></h3><p>Solvers such as Levenberg-Marquardt find local minimas and are very sensitive to the initial conditions. Depending on the starting conditions for your solver, you could end up with a good set of parameters with good convergence or not so good set of parameters. We will look at two initial conditions for different solvers and see how the local minima solvers perform. We will compare this with differential evolution that looks for global minima.</p>
+<p>We will setup the Heston model with two different initial conditions:</p>
+<pre><code>- theta, kappa, sigma, rho, v0 = (0.02, 0.2, 0.5, 0.1, 0.01)
+- theta, kappa, sigma, rho, v0 = (0.07, 0.5, 0.1, 0.1, 0.1)</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Local-Solvers">Local Solvers<a class="anchor-link" href="#Local-Solvers">¶</a></h4><h5 id="Using-QuantLib-Levenberg-Marquardt-Solver">Using QuantLib Levenberg-Marquardt Solver<a class="anchor-link" href="#Using-QuantLib-Levenberg-Marquardt-Solver">¶</a></h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As a first step, let's look at QuantLib's Levenberg-Marquardt solver. The initial condition considered is <code>theta, kappa, sigma, rho, v0 = (0.02,0.2,0.5,0.1,0.01)</code></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model1</span><span class="p">,</span> <span class="n">engine1</span> <span class="o">=</span> <span class="n">setup_model</span><span class="p">(</span>
+    <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> 
+    <span class="n">init_condition</span><span class="o">=</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.01</span><span class="p">))</span>
+<span class="n">heston_helpers1</span><span class="p">,</span> <span class="n">grid_data1</span> <span class="o">=</span> <span class="n">setup_helpers</span><span class="p">(</span>
+    <span class="n">engine1</span><span class="p">,</span> <span class="n">expiration_dates</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> 
+    <span class="n">calculation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span>
+<span class="p">)</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model1</span><span class="o">.</span><span class="n">params</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+lm = ql.LevenbergMarquardt(1e-8, 1e-8, 1e-8)
+model1.calibrate(heston_helpers1, lm, 
+                 ql.EndCriteria(500, 300, 1.0e-8,1.0e-8, 1.0e-8))
+theta, kappa, sigma, rho, v0 = model1.params()
+print "theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f" % \
+    (theta, kappa, sigma, rho, v0)
+error = calibration_report(heston_helpers1, grid_data1)
+summary.append(["QL LM1", error] + list(model1.params()))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>theta = 0.125748, kappa = 7.915000, sigma = 1.887854, rho = -0.364942, v0 = 0.055397
+Average Abs Error (%) : 3.015268051
+CPU times: user 4.86 s, sys: 0 ns, total: 4.86 s
+Wall time: 4.86 s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Methods like Levenberg-Marquardt solve for local minimas and do not search for global minimas. The solver is very sensitive to the initial conditions. Let's set a different set of initial conditions, and see what happens below. The initial condition considered is <code>theta, kappa, sigma, rho, v0 = (0.07,0.5,0.1,0.1,0.1)</code></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model1</span><span class="p">,</span> <span class="n">engine1</span> <span class="o">=</span> <span class="n">setup_model</span><span class="p">(</span>
+    <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> 
+    <span class="n">init_condition</span><span class="o">=</span><span class="p">(</span><span class="mf">0.07</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">heston_helpers1</span><span class="p">,</span> <span class="n">grid_data1</span> <span class="o">=</span> <span class="n">setup_helpers</span><span class="p">(</span>
+    <span class="n">engine1</span><span class="p">,</span> <span class="n">expiration_dates</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> 
+    <span class="n">calculation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span>
+<span class="p">)</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model1</span><span class="o">.</span><span class="n">params</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+lm = ql.LevenbergMarquardt(1e-8, 1e-8, 1e-8)
+model1.calibrate(heston_helpers1, lm, 
+                 ql.EndCriteria(500, 300, 1.0e-8,1.0e-8, 1.0e-8))
+theta, kappa, sigma, rho, v0 = model1.params()
+print "theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f" % \
+    (theta, kappa, sigma, rho, v0)
+error = calibration_report(heston_helpers1, grid_data1)
+summary.append(["QL LM2", error] + list(model1.params()))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>theta = 0.084523, kappa = 0.000000, sigma = 0.132289, rho = -0.514278, v0 = 0.099928
+Average Abs Error (%) : 11.007433024
+CPU times: user 4.97 s, sys: 0 ns, total: 4.97 s
+Wall time: 4.98 s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We see that the solver produces a 11% average of absolute error. This is not particularly great.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Using-Scipy-Levenberg-Marquardt-Solver">Using Scipy Levenberg-Marquardt Solver<a class="anchor-link" href="#Using-Scipy-Levenberg-Marquardt-Solver">¶</a></h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here we are going to try the same exercise but using Scipy. Scipy has far more optimization, minimization and root finding algorithms that are very robust. So by leveraging Scipy, we can take advantage of this rich set of options at hand.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model2</span><span class="p">,</span> <span class="n">engine2</span> <span class="o">=</span> <span class="n">setup_model</span><span class="p">(</span>
+    <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> 
+    <span class="n">init_condition</span><span class="o">=</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.01</span><span class="p">))</span>
+<span class="n">heston_helpers2</span><span class="p">,</span> <span class="n">grid_data2</span> <span class="o">=</span> <span class="n">setup_helpers</span><span class="p">(</span>
+    <span class="n">engine2</span><span class="p">,</span> <span class="n">expiration_dates</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span>
+    <span class="n">calculation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span>
+<span class="p">)</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model2</span><span class="o">.</span><span class="n">params</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+cost_function = cost_function_generator(model2, heston_helpers2)
+sol = root(cost_function, initial_condition, method='lm')
+theta, kappa, sigma, rho, v0 = model2.params()
+print "theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f" % \
+    (theta, kappa, sigma, rho, v0)
+error = calibration_report(heston_helpers2, grid_data2)
+summary.append(["Scipy LM1", error] + list(model2.params()))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>theta = 0.125747, kappa = 7.915687, sigma = 1.887934, rho = -0.364944, v0 = 0.055394
+Average Abs Error (%) : 3.015252651
+CPU times: user 4.68 s, sys: 12 ms, total: 4.69 s
+Wall time: 4.65 s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The solution for this particular case seems to be fairly robust. Both solvers (QuantLib and Scipy) seem to have landed on more or less the same solution for this particular initial condition. Let's see how Scipy does for the second initial condition considered above -  <code>theta, kappa, sigma, rho, v0 = (0.07,0.5,0.1,0.1,0.1)</code></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model2</span><span class="p">,</span> <span class="n">engine2</span> <span class="o">=</span> <span class="n">setup_model</span><span class="p">(</span>
+    <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span>
+    <span class="n">init_condition</span><span class="o">=</span><span class="p">(</span><span class="mf">0.07</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">heston_helpers2</span><span class="p">,</span> <span class="n">grid_data2</span> <span class="o">=</span> <span class="n">setup_helpers</span><span class="p">(</span>
+    <span class="n">engine2</span><span class="p">,</span> <span class="n">expiration_dates</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span>
+    <span class="n">calculation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span>
+<span class="p">)</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model2</span><span class="o">.</span><span class="n">params</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+cost_function = cost_function_generator(model2, heston_helpers2)
+sol = root(cost_function, initial_condition, method='lm')
+theta, kappa, sigma, rho, v0 = model2.params()
+print "theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f" % \
+    (theta, kappa, sigma, rho, v0)
+error = calibration_report(heston_helpers2, grid_data2)
+summary.append(["Scipy LM2", error] + list(model2.params()))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>theta = 0.048184, kappa = -0.548903, sigma = 0.197958, rho = -0.999547, v0 = 0.090571
+Average Abs Error (%) : 7.019499509
+CPU times: user 20.7 s, sys: 56 ms, total: 20.7 s
+Wall time: 20.5 s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this particular case, Scipy solver has performed significantly better. It would be inappropriate to make loud claims about Scipy's superiority based on one observation. Perhaps this calls for a more detailed study for later.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Using-Least-Squares-Method">Using Least Squares Method<a class="anchor-link" href="#Using-Least-Squares-Method">¶</a></h5><p>If you want to use a simpler approach like least squares, you can do that with Scipy. Here is how you would use it.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="k">import</span> <span class="n">least_squares</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model3</span><span class="p">,</span> <span class="n">engine3</span> <span class="o">=</span> <span class="n">setup_model</span><span class="p">(</span>
+    <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> 
+    <span class="n">init_condition</span><span class="o">=</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.01</span><span class="p">))</span>
+<span class="n">heston_helpers3</span><span class="p">,</span> <span class="n">grid_data3</span> <span class="o">=</span> <span class="n">setup_helpers</span><span class="p">(</span>
+    <span class="n">engine3</span><span class="p">,</span> <span class="n">expiration_dates</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span>
+    <span class="n">calculation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span>
+<span class="p">)</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model3</span><span class="o">.</span><span class="n">params</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+cost_function = cost_function_generator(model3, heston_helpers3)
+sol = least_squares(cost_function, initial_condition)
+theta, kappa, sigma, rho, v0 = model3.params()
+print "theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f" % \
+    (theta, kappa, sigma, rho, v0)
+error = calibration_report(heston_helpers3, grid_data3)
+summary.append(["Scipy LS1", error] + list(model3.params()))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>theta = 0.125747, kappa = 7.915814, sigma = 1.887949, rho = -0.364944, v0 = 0.055394
+Average Abs Error (%) : 3.015251175
+CPU times: user 4.54 s, sys: 8 ms, total: 4.55 s
+Wall time: 4.55 s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With the second initial condition:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model3</span><span class="p">,</span> <span class="n">engine3</span> <span class="o">=</span> <span class="n">setup_model</span><span class="p">(</span>
+    <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> 
+    <span class="n">init_condition</span><span class="o">=</span><span class="p">(</span><span class="mf">0.07</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">heston_helpers3</span><span class="p">,</span> <span class="n">grid_data3</span> <span class="o">=</span> <span class="n">setup_helpers</span><span class="p">(</span>
+    <span class="n">engine3</span><span class="p">,</span> <span class="n">expiration_dates</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span>
+    <span class="n">calculation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span>
+<span class="p">)</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model3</span><span class="o">.</span><span class="n">params</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+cost_function = cost_function_generator(model3, heston_helpers3)
+sol = least_squares(cost_function, initial_condition)
+theta, kappa, sigma, rho, v0 = model3.params()
+print "theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f" % \
+    (theta, kappa, sigma, rho, v0)
+error = calibration_report(heston_helpers3, grid_data3)
+summary.append(["Scipy LS2", error] + list(model3.params()))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>theta = 3.136774, kappa = 0.000005, sigma = -0.000245, rho = -0.000010, v0 = 1.597904
+Average Abs Error (%) : 5.096414042
+CPU times: user 28.1 s, sys: 16 ms, total: 28.2 s
+Wall time: 28.1 s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Global-Solvers">Global Solvers<a class="anchor-link" href="#Global-Solvers">¶</a></h4><h5 id="Using-Differential-Evolution">Using Differential Evolution<a class="anchor-link" href="#Using-Differential-Evolution">¶</a></h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The above methods are more suited to finding local minimas. One method that makes an attempt at searching for global minima is the differential evolution. Both QuantLib and Scipy have implementations of this method. Scipy however has a lot more bells and whistles to tune and calibrate the methodology. Let's take a look at the Scipy's <code>differential_evolution</code> methodology.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="k">import</span> <span class="n">differential_evolution</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model4</span><span class="p">,</span> <span class="n">engine4</span> <span class="o">=</span> <span class="n">setup_model</span><span class="p">(</span><span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span><span class="p">,</span> <span class="n">spot</span><span class="p">)</span>
+<span class="n">heston_helpers4</span><span class="p">,</span> <span class="n">grid_data4</span> <span class="o">=</span> <span class="n">setup_helpers</span><span class="p">(</span>
+    <span class="n">engine4</span><span class="p">,</span> <span class="n">expiration_dates</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span>
+    <span class="n">calculation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span>
+<span class="p">)</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model4</span><span class="o">.</span><span class="n">params</span><span class="p">())</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [20]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+cost_function = cost_function_generator(
+    model4, heston_helpers4, norm=True)
+sol = differential_evolution(cost_function, bounds, maxiter=100)
+theta, kappa, sigma, rho, v0 = model4.params()
+print "theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f" % \
+    (theta, kappa, sigma, rho, v0)
+error = calibration_report(heston_helpers4, grid_data4)
+summary.append(["Scipy DE1", error] + list(model4.params()))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>theta = 0.123221, kappa = 5.012199, sigma = 0.950309, rho = -0.570340, v0 = 0.078440
+Average Abs Error (%) : 2.859113482
+CPU times: user 1min 39s, sys: 144 ms, total: 1min 39s
+Wall time: 1min 39s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the above example, I am setting the variable <code>maxiter</code> in order to limit the time taken. In production scenarios, you may want to try a larger number or not provide any value and default to 1000. This can help search a larger area of the parameter space.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model4</span><span class="p">,</span> <span class="n">engine4</span> <span class="o">=</span> <span class="n">setup_model</span><span class="p">(</span><span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span><span class="p">,</span> <span class="n">spot</span><span class="p">)</span>
+<span class="n">heston_helpers4</span><span class="p">,</span> <span class="n">grid_data4</span> <span class="o">=</span> <span class="n">setup_helpers</span><span class="p">(</span>
+    <span class="n">engine4</span><span class="p">,</span> <span class="n">expiration_dates</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span>
+    <span class="n">calculation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span>
+<span class="p">)</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model4</span><span class="o">.</span><span class="n">params</span><span class="p">())</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+cost_function = cost_function_generator(
+    model4, heston_helpers4, norm=True)
+sol = differential_evolution(cost_function, bounds, maxiter=100)
+theta, kappa, sigma, rho, v0 = model4.params()
+print "theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f" % \
+    (theta, kappa, sigma, rho, v0)
+error = calibration_report(heston_helpers4, grid_data4)
+summary.append(["Scipy DE2", error] + list(model4.params()))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>theta = 0.122251, kappa = 4.996804, sigma = 0.849266, rho = -0.637706, v0 = 0.079484
+Average Abs Error (%) : 2.876087363
+CPU times: user 1min 57s, sys: 200 ms, total: 1min 57s
+Wall time: 1min 57s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Basin-Hopping-Algorithm">Basin Hopping Algorithm<a class="anchor-link" href="#Basin-Hopping-Algorithm">¶</a></h5><p>Here we will use the Basin Hopping (annealing like) method to solve for the parameters. A couple things to make note here. The Basin Hopping method works best when used wiht a minimizer. Here I played with various minimizers and finally decided to use something that supports bounds checking. Without bounds checking, I often ended with <code>nan</code> and did not have a meaningful solution in the end.</p>
+<p>I have chosen bounds based on a very basic reasoning. One needs careful reasoning to use appropriate bounds for the problem at hand.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [23]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="k">import</span> <span class="n">basinhopping</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [24]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">MyBounds</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">xmax</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]</span> <span class="p">):</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">xmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xmax</span><span class="p">)</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">xmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xmin</span><span class="p">)</span>
+     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+         <span class="n">x</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">"x_new"</span><span class="p">]</span>
+         <span class="n">tmax</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xmax</span><span class="p">))</span>
+         <span class="n">tmin</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xmin</span><span class="p">))</span>
+         <span class="k">return</span> <span class="n">tmax</span> <span class="ow">and</span> <span class="n">tmin</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [25]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model5</span><span class="p">,</span> <span class="n">engine5</span> <span class="o">=</span> <span class="n">setup_model</span><span class="p">(</span>
+    <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span>
+    <span class="n">init_condition</span><span class="o">=</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.01</span><span class="p">))</span>
+<span class="n">heston_helpers5</span><span class="p">,</span> <span class="n">grid_data5</span> <span class="o">=</span> <span class="n">setup_helpers</span><span class="p">(</span>
+    <span class="n">engine5</span><span class="p">,</span> <span class="n">expiration_dates</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span>
+    <span class="n">calculation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span>
+<span class="p">)</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model5</span><span class="o">.</span><span class="n">params</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [26]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+mybound = MyBounds()
+minimizer_kwargs = {"method": "L-BFGS-B", "bounds": bounds }
+cost_function = cost_function_generator(
+    model5, heston_helpers5, norm=True)
+sol = basinhopping(cost_function, initial_condition, niter=5,
+                   minimizer_kwargs=minimizer_kwargs,
+                   stepsize=0.005,
+                   accept_test=mybound,
+                   interval=10)
+theta, kappa, sigma, rho, v0 = model5.params()
+print "theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f" % \
+    (theta, kappa, sigma, rho, v0)
+error = calibration_report(heston_helpers5, grid_data5)
+summary.append(["Scipy BH1", error] + list(model5.params()))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>theta = 0.123455, kappa = 5.074067, sigma = 0.995095, rho = -0.562106, v0 = 0.079009
+Average Abs Error (%) : 2.850972273
+CPU times: user 2min 15s, sys: 456 ms, total: 2min 16s
+Wall time: 2min 14s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [27]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model5</span><span class="p">,</span> <span class="n">engine5</span> <span class="o">=</span> <span class="n">setup_model</span><span class="p">(</span>
+    <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span>
+    <span class="n">init_condition</span><span class="o">=</span><span class="p">(</span><span class="mf">0.07</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">heston_helpers5</span><span class="p">,</span> <span class="n">grid_data5</span> <span class="o">=</span> <span class="n">setup_helpers</span><span class="p">(</span>
+    <span class="n">engine5</span><span class="p">,</span> <span class="n">expiration_dates</span><span class="p">,</span> <span class="n">strikes</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span>
+    <span class="n">calculation_date</span><span class="p">,</span> <span class="n">spot</span><span class="p">,</span> <span class="n">yield_ts</span><span class="p">,</span> <span class="n">dividend_ts</span>
+<span class="p">)</span>
+<span class="n">initial_condition</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model5</span><span class="o">.</span><span class="n">params</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [28]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
+mybound = MyBounds()
+minimizer_kwargs = {"method": "L-BFGS-B", "bounds": bounds}
+cost_function = cost_function_generator(
+    model5, heston_helpers5, norm=True)
+sol = basinhopping(cost_function, initial_condition, niter=5,
+                   minimizer_kwargs=minimizer_kwargs,
+                   stepsize=0.005,
+                   accept_test=mybound,
+                   interval=10)
+theta, kappa, sigma, rho, v0 = model5.params()
+print "theta = %f, kappa = %f, sigma = %f, rho = %f, v0 = %f" % \
+    (theta, kappa, sigma, rho, v0)
+error = calibration_report(heston_helpers5, grid_data5)
+summary.append(["Scipy BH2", error] + list(model5.params()))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>theta = 0.123403, kappa = 4.791319, sigma = 0.904397, rho = -0.593711, v0 = 0.079215
+Average Abs Error (%) : 2.863355647
+CPU times: user 1min 50s, sys: 332 ms, total: 1min 50s
+Wall time: 1min 49s
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h4><p>Here is a summary of all the results with the calibration error overall, and the respective parameters. All the local minima methods give parameters that are very different based on the initial condition that we start with. This is different in contrary with the global minimization methods that all end up in more or less the same proximity of each other.</p>
+<p>The global solvers such as Differential Evolution and Basin Hopping are capable of finding the global minima and it is sometimes a question of computation resources. Here, I have lower "iterations" set for these routines for faster solving. Even with such a short threshold, we get fairly good solution set. I think it is premature to compare the effectiveness of different global solvers just based on the results here. The <a href="http://docs.scipy.org/doc/scipy/reference/optimize.html">scipy optimize</a> package has detailed documentation with various tuning parameters. I haven't exploited the nuances much, and is left as an exercise for the reader.</p>
+<p>Hope you find this useful!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [29]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">DataFrame</span>
+<span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">summary</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Name"</span><span class="p">,</span> <span class="s2">"Avg Abs Error"</span><span class="p">,</span><span class="s2">"Theta"</span><span class="p">,</span> <span class="s2">"Kappa"</span><span class="p">,</span> <span class="s2">"Sigma"</span><span class="p">,</span> <span class="s2">"Rho"</span><span class="p">,</span> <span class="s2">"V0"</span><span class="p">],</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">''</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">summary</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[29]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div style="max-width:1500px;overflow:auto;">
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Name</th>
+<th>Avg Abs Error</th>
+<th>Theta</th>
+<th>Kappa</th>
+<th>Sigma</th>
+<th>Rho</th>
+<th>V0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th></th>
+<td>QL LM1</td>
+<td>3.015268</td>
+<td>0.125748</td>
+<td>7.915000e+00</td>
+<td>1.887854</td>
+<td>-0.364942</td>
+<td>0.055397</td>
+</tr>
+<tr>
+<th></th>
+<td>QL LM2</td>
+<td>11.007433</td>
+<td>0.084523</td>
+<td>1.625740e-08</td>
+<td>0.132289</td>
+<td>-0.514278</td>
+<td>0.099928</td>
+</tr>
+<tr>
+<th></th>
+<td>Scipy LM1</td>
+<td>3.015253</td>
+<td>0.125747</td>
+<td>7.915687e+00</td>
+<td>1.887934</td>
+<td>-0.364944</td>
+<td>0.055394</td>
+</tr>
+<tr>
+<th></th>
+<td>Scipy LM2</td>
+<td>7.019500</td>
+<td>0.048184</td>
+<td>-5.489029e-01</td>
+<td>0.197958</td>
+<td>-0.999547</td>
+<td>0.090571</td>
+</tr>
+<tr>
+<th></th>
+<td>Scipy LS1</td>
+<td>3.015251</td>
+<td>0.125747</td>
+<td>7.915814e+00</td>
+<td>1.887949</td>
+<td>-0.364944</td>
+<td>0.055394</td>
+</tr>
+<tr>
+<th></th>
+<td>Scipy LS2</td>
+<td>5.096414</td>
+<td>3.136774</td>
+<td>4.896844e-06</td>
+<td>-0.000245</td>
+<td>-0.000010</td>
+<td>1.597904</td>
+</tr>
+<tr>
+<th></th>
+<td>Scipy DE1</td>
+<td>2.859113</td>
+<td>0.123221</td>
+<td>5.012199e+00</td>
+<td>0.950309</td>
+<td>-0.570340</td>
+<td>0.078440</td>
+</tr>
+<tr>
+<th></th>
+<td>Scipy DE2</td>
+<td>2.876087</td>
+<td>0.122251</td>
+<td>4.996804e+00</td>
+<td>0.849266</td>
+<td>-0.637706</td>
+<td>0.079484</td>
+</tr>
+<tr>
+<th></th>
+<td>Scipy BH1</td>
+<td>2.850972</td>
+<td>0.123455</td>
+<td>5.074067e+00</td>
+<td>0.995095</td>
+<td>-0.562106</td>
+<td>0.079009</td>
+</tr>
+<tr>
+<th></th>
+<td>Scipy BH2</td>
+<td>2.863356</td>
+<td>0.123403</td>
+<td>4.791319e+00</td>
+<td>0.904397</td>
+<td>-0.593711</td>
+<td>0.079215</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+  </div>
+</article>
+<hr>
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() {
+    this.page.url = 'https://henningschmies.github.io/heston-calibration-scipy-many.html';
+    this.page.identifier = 'heston-calibration-scipy-many';
+  };
+  (function() {
+    var d = document;
+    var s = d.createElement('script');
+    s.src = '//Xima-github.disqus.com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript class="text-muted">
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+        <div>
+        <h6>Ja, wo ist Henning denn gerade?</h6>
+        <iframe src="https://trck.at/nGqxN5Z" width="100%" height="200px" scrolling="no"></iframe>
+        </div>
+        <hr>
+      <div class="row">
+       <ul class="col-sm-6 list-inline">
+          <li class="list-inline-item"><a href="https://henningschmies.github.io/authors.html">Authors</a></li>
+          <li class="list-inline-item"><a href="https://henningschmies.github.io/archives.html">Archives</a></li>
+          <li class="list-inline-item"><a href="https://henningschmies.github.io/categories.html">Categories</a></li>
+          <li class="list-inline-item"><a href="https://henningschmies.github.io/tags.html">Tags</a></li>
+        </ul>
+        <p class="col-sm-6 text-sm-right text-muted">
+          Look at the <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a> fly / <a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
